@@ -37,7 +37,7 @@ class Tab extends React.Component {
                                         selected:this.state.activeName === tab.activeName
                                     })}
 								onClick={() => this.changeActiveName(tab.activeName)}>
-								{tab.name}
+								{tab.title}
 							</div>
 						);
 					})

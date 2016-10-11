@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import './style.less';
 
 function Icon(props) {
@@ -8,11 +7,10 @@ function Icon(props) {
 
     return (
         <img
-            className="img-icon"
+            className='img-icon'
             src={src}
             style={props.style}
-            alt="icon"
-        />
+            alt='icon' />
     );
 }
 

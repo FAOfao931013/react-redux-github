@@ -5,8 +5,8 @@ import * as Search from 'src/Search';
 
 let routes = (
     <div>
-        <Route path="/" component={rootNode}>
-            <Route path="search" component={Search.containers}/>
+        <Route path='/' component={rootNode}>
+            <Route path='search' component={Search.containers} />
         </Route>
     </div>
 );

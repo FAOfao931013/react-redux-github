@@ -11,20 +11,16 @@ const {
     Item
 } = ListBlock;
 
-const tabs = [
-    {
-        activeName:'repositories',
-        name:'Repositories'
-    },
-    {
-        activeName:'issues',
-        name:'Issues'
-    },
-    {
-        activeName:'users',
-        name:'Users'
-    }
-];
+const tabs = [{
+    activeName: 'repositories',
+    title: 'Repositories'
+}, {
+    activeName: 'issues',
+    title: 'Issues'
+}, {
+    activeName: 'users',
+    title: 'Users'
+}];
 
 class Search extends React.Component {
     constructor(props) {
