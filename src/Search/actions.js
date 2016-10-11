@@ -6,14 +6,15 @@ const {
     SEARCH_ACTIVENAME
 } = actionTypes;
 
-export function getItemsAction(items) {
+export function getItemsAction(items, totalCount) {
     return {
         type: SEARCH_ITEMS,
-        items: items
+        items: items,
+        totalCount:totalCount
     };
 }
 
-export function getActiveName(activeName) {
+export function changeActiveName(activeName) {
     return {
         type: SEARCH_ACTIVENAME,
         activeName: activeName
@@ -21,12 +22,11 @@ export function getActiveName(activeName) {
 }
 
 export function getItems(query, type, page = 1) {
-    if (!type) type = 'users';
     return dispatch => {
         return fetch('https://api.github.com/search/' + type + '?q=' + query + '&page=' + page)
             .then(res => res.json())
             .then(res => {
-                dispatch(getItemsAction(res.items));
+                dispatch(getItemsAction(res.items, res.total_count));
             });
     };
 }

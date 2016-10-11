@@ -4,6 +4,7 @@ import Content from 'components/Content';
 import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
+import CountPage from 'components/CountPage';
 import './style.less';
 
 const {
@@ -88,20 +89,31 @@ class Search extends React.Component {
     }
 
     keyUpHandler(e) {
+
         if (e.keyCode === 13) {
-            this.props.getItems(e.target.value, this.props.activeName);
+
+            let activeName = this.props.activeName ? this.props.activeName : tabs[2].activeName;
+
+            this.props.changeActiveName(activeName);
+            this.props.getItems(e.target.value, activeName);
         }
     }
 
     changeTabHandler(activeName) {
-        this.props.getItems(this.refs.search.value, activeName, 1);
-        this.props.getActiveName(activeName);
+        this.props.changeActiveName(activeName);
+        this.props.getItems(this.refs.search.value, activeName);
+    }
+
+    changePageHandler(page) {
+        this.props.getItems(this.refs.search.value, this.props.activeName, page);
     }
 
     render() {
         let {
             items,
-            activeName
+            activeName,
+            totalPages,
+            resetPage
         } = this.props;
 
         return (
@@ -138,14 +150,10 @@ class Search extends React.Component {
                         </Item>
                     </List>
 
-                    <List>
-                        <item>
-                            <Tab
-                                tabs={tabs}
-                                activeName={tabs[2].activeName}
-                                onChange={_activeName => this.changeTabHandler(_activeName)} />
-                        </item>
-                    </List>
+                    <Tab
+                        tabs={tabs}
+                        activeName={tabs[2].activeName}
+                        onChange={_activeName => this.changeTabHandler(_activeName)} />
 
                     {
                         activeName === 'repositories' && items &&
@@ -172,6 +180,14 @@ class Search extends React.Component {
                                 items.size > 0 && this.renderUserItems(items)
                             }
                         </List>
+                    }
+
+                    {
+                        items && items.size > 0 &&
+                        <CountPage
+                            max={totalPages}
+                            reset={resetPage}
+                            onChange={_page => this.changePageHandler(_page)} />
                     }
                 </Content>
             </div>
