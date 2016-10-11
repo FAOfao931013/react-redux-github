@@ -3,13 +3,28 @@ import Header from 'components/Header';
 import Content from 'components/Content';
 import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
-import classNames from 'classnames';
+import Tab from 'components/Tab';
 import './style.less';
 
 const {
     List,
     Item
 } = ListBlock;
+
+const tabs = [
+    {
+        activeName:'repositories',
+        name:'Repositories'
+    },
+    {
+        activeName:'issues',
+        name:'Issues'
+    },
+    {
+        activeName:'users',
+        name:'Users'
+    }
+];
 
 class Search extends React.Component {
     constructor(props) {
@@ -129,26 +144,10 @@ class Search extends React.Component {
 
                     <List>
                         <item>
-                            <div className='tabs'>
-                                <div
-                                    className={classNames('tab', {
-                                        select_rep:activeName === 'repositories'
-                                    })}
-                                    onClick={() => this.changeTabHandler('repositories')}>
-                                    Repositories</div>
-                                <div
-                                    className={classNames('tab', {
-                                        select_issues:activeName === 'issues'
-                                    })}
-                                    onClick={() => this.changeTabHandler('issues')}>
-                                    Issues</div>
-                                <div
-                                    className={classNames('tab', {
-                                        select_users:activeName === 'users'
-                                    })}
-                                    onClick={() => this.changeTabHandler('users')}>
-                                    Users</div>
-                            </div>
+                            <Tab
+                                tabs={tabs}
+                                activeName={tabs[2].activeName}
+                                onChange={_activeName => this.changeTabHandler(_activeName)} />
                         </item>
                     </List>
 
@@ -178,8 +177,6 @@ class Search extends React.Component {
                             }
                         </List>
                     }
-
-
                 </Content>
             </div>
         );

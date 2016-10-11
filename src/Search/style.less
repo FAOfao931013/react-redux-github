@@ -12,38 +12,33 @@
         }
     }
     .tabs {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-        background: #fafafa;
         .tab {
-            display: table-cell;
-            text-align: center;
-            padding: 10px 0;
             color: #4078c0;
             border-bottom: 1px solid #ddd;
         }
-        .tab[class*=select] {
+        .tab[class*=selected] {
             color: #444;
             background-color: #fff;
             border-top: 2px solid #d26911;
             border-bottom-color: #fff;
         }
-        .select_rep {
+        .selected:nth-child(1) {
             border-right: 1px solid #ddd;
         }
-        .select_issues {
+        .selected:nth-child(2) {
             border-right: 1px solid #ddd;
             border-left: 1px solid #ddd;
         }
-        .select_users {
+        .selected:nth-child(3) {
             border-left: 1px solid #ddd;
         }
     }
+
     .item-content {
         width: 100%;
         padding: 14px 15px 14px 35px;
     }
+
     .item-wrap {
         display: flex;
         justify-content: space-between;
@@ -60,12 +55,15 @@
             color: #767676;
         }
     }
+
     .rep-items {}
+
     .issues-items {
         .des {
             font-size: 12px;
         }
     }
+
     .users-items {
         .item-content.media {
             position: relative;
