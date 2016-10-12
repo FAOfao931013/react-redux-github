@@ -34,6 +34,14 @@ class Search extends React.Component {
         clearToolbar();
     }
 
+    cutWords(string, length) {
+        if (string.length > length) {
+            return string.substring(0, length) + '...';
+        } else {
+            return string;
+        }
+    }
+
     renderRepositoriesItems(items) {
         return items.map(rep => (
             <Item
@@ -44,8 +52,14 @@ class Search extends React.Component {
                         {rep.get('stargazers_count')}<span>★</span>
                     </div>
                 </div>
-
-                <div className='des'>{rep.get('description')}</div>
+                {
+                    rep.get('description') && rep.get('description') !== '' &&
+                    <div className='des'>
+                        {
+                            this.cutWords(rep.get('description'), 200)
+                        }
+                    </div>
+                }
             </Item>
         ));
     }
@@ -65,9 +79,7 @@ class Search extends React.Component {
                     issue.get('body') && issue.get('body') !== '' &&
                     <div className='des'>
                         {
-                            issue.get('body').length > 200 ?
-                            issue.get('body').substring(0, 200) + '...'
-                            : issue.get('body')
+                            this.cutWords(issue.get('body'), 200)
                         }
                     </div>
                 }
