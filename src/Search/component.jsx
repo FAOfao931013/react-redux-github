@@ -168,7 +168,7 @@ class Search extends React.Component {
                         onChange={_activeName => this.changeTabHandler(_activeName)} />
 
                     {
-                        activeName === 'repositories' && items &&
+                        activeName === tabs[0].activeName && items &&
                         <List className='rep-items'>
                             {
                                 items.size > 0 && this.renderRepositoriesItems(items)
@@ -177,7 +177,7 @@ class Search extends React.Component {
                     }
 
                     {
-                        activeName === 'issues' && items &&
+                        activeName === tabs[1].activeName && items &&
                         <List className='issues-items'>
                             {
                                 items.size > 0 && this.renderIssuesItems(items)
@@ -186,7 +186,7 @@ class Search extends React.Component {
                     }
 
                     {
-                        activeName === 'users' && items &&
+                        activeName === tabs[2].activeName && items &&
                         <List className='users-items'>
                             {
                                 items.size > 0 && this.renderUserItems(items)

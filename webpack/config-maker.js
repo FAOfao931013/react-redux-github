@@ -1,6 +1,5 @@
 var WebpackConfig = require('webpack-config');
 var path = require('path');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 var paths = {
     src: path.join(__dirname, '../src'),
@@ -13,9 +12,6 @@ var paths = {
 };
 
 var config = {
-    entry: {
-        entry: [hotMiddlewareScript, path.join(__dirname, '../src/entry.js')]
-    },
 
     devtool: '#source-map',
 
