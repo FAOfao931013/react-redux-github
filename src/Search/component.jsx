@@ -1,4 +1,5 @@
 import React from 'react';
+import Immutable from 'immutable';
 import Header from 'components/Header';
 import Content from 'components/Content';
 import ListBlock from 'components/ListBlock';
@@ -207,6 +208,11 @@ class Search extends React.Component {
     }
 }
 
-Search.propTypes = {};
+Search.propTypes = {
+    item:React.PropTypes.instanceOf(Immutable.List),
+    activeName:React.PropTypes.string,
+    totalPages:React.PropTypes.number,
+    resetPage:React.PropTypes.bool
+};
 
 export default Search;
