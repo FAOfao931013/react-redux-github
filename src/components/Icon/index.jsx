@@ -1,13 +1,9 @@
 import React from 'react';
 import './style.less';
 
-const path = require('path');
-
 function Icon(props) {
 
-	// console.log(path.join(__dirname, '../src')+ '/img/icon/');
-
-    const src = path.join(__dirname, '../src') + '/img/icon/' + props.name + '.png';
+    const src = '../src/img/icon/' + props.name + '.png';
 
     return (
         <img
