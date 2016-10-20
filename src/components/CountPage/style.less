@@ -1,11 +1,20 @@
 .pagination {
     text-align: center;
     div {
-        padding: 10px 15px;
         border-bottom: 1px solid #ddd;
-        &:nth-child(2) {
-            border-right: 1px solid #ddd;
-            border-left: 1px solid #ddd;
-        }
+    }
+    .current-page{
+    	padding: 10px 15px;
+    	border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+
+    button{
+		padding: 10px 15px;
+		width: 100%;
+    }
+
+    .active-state{
+		background-color: #bfe5f3;
     }
 }
