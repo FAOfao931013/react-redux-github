@@ -63,23 +63,19 @@ class CountPage extends React.Component {
 
         return (
             <div className='pagination row no-gutter'>
-                <div className='col-33'>
-                    <button
-                        className={classNames({
+                    <div
+                        className={classNames('col-33', {
                             disabled:page <= min
                         })}
                         onClick={this.minusPage}>◀︎
-                    </button>
-                </div>
+                    </div>
                 <div className='col-33 current-page'>{page + '/' + max}</div>
-                <div className='col-33'>
-                    <button
-                        className={classNames({
+                    <div
+                        className={classNames('col-33', {
                             disabled:page >= max
                         })}
                         onClick={this.addPage}>▶︎
-                    </button>
-                </div>
+                    </div>
             </div>
         );
     }
