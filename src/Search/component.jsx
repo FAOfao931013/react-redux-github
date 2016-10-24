@@ -95,7 +95,9 @@ class Search extends React.Component {
                     <img src={user.get('avatar_url')} />
                 </div>
                 <div className='item-inner'>
-                    <div className='item-title'>{user.get('login')}</div>
+                    <div
+                        className='item-title'
+                        onClick={() => this.props.gotoUser(user.get('login'))}>{user.get('login')}</div>
                 </div>
             </Item>
         ));

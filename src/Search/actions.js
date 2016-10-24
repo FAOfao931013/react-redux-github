@@ -10,7 +10,7 @@ export function getItemsAction(items, totalCount) {
     return {
         type: SEARCH_ITEMS,
         items: items,
-        totalCount:totalCount
+        totalCount: totalCount
     };
 }
 
@@ -22,8 +22,11 @@ export function changeActiveName(activeName) {
 }
 
 export function getItems(query, type, page = 1) {
+    const req = new Request('https://api.github.com/search/' + type + '?q=' + query + '&page=' + page, {
+        method:'GET'
+    });
     return dispatch => {
-        return fetch('https://api.github.com/search/' + type + '?q=' + query + '&page=' + page)
+        return fetch(req)
             .then(res => res.json())
             .then(res => {
                 dispatch(getItemsAction(res.items, res.total_count));
