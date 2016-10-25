@@ -5,6 +5,7 @@ import Content from 'components/Content';
 import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
+import languageColor from 'common/languageColor';
 import './style.less';
 
 const {
@@ -115,6 +116,48 @@ class User extends React.Component {
         );
     }
 
+    getLanguageColor(language) {
+        let _color;
+        languageColor.map((color, lan) => {
+            if (lan === language) _color = color;
+        });
+        return (
+            <div
+                className='language-color'
+                style={{backgroundColor:_color}}></div>
+        );
+    }
+
+    renderRepos(reps) {
+        return (
+            <div className='repositories'>
+                <List>
+                {
+                    reps.map(rep => (
+                        <Item key={rep.get('id')}>
+                            <div className='item-inner'>
+                                <div className='item-title full-name'>
+                                    {rep.get('full_name')}
+                                </div>
+                                <div className='star-language'>
+                                    <div className='star-count'>
+                                        <span>★</span>
+                                        {rep.get('stargazers_count')}
+                                    </div>
+                                    <div className='language'>
+                                    {this.getLanguageColor(rep.get('language'))}
+                                        {rep.get('language')}
+                                    </div>
+                                </div>
+                            </div>
+                        </Item>
+                    ))
+                }
+                </List>
+            </div>
+        );
+    }
+
     render() {
         let {
             user,
@@ -152,6 +195,11 @@ class User extends React.Component {
                         {
                             activeName === tabs[0].activeName && user && reps &&
                             this.renderOverView(user, reps)
+                        }
+
+                        {
+                            activeName === tabs[1].activeName && reps &&
+                            this.renderRepos(reps)
                         }
                     </Content>
             </div>
