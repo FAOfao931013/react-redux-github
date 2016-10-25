@@ -160,7 +160,8 @@ class User extends React.Component {
 }
 
 User.propTypes = {
-    user: React.PropTypes.instanceOf(Immutable.Map)
+    user: React.PropTypes.instanceOf(Immutable.Map),
+    reps: React.PropTypes.instanceOf(Immutable.List)
 };
 
 export default User;
