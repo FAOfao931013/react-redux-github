@@ -1,32 +1,101 @@
 @import '../less/global.less';
 .user {
-    img {
-        width: 110px;
-        height: 110px;
+    .navbar-inner {
+        background-color: #f5f5f5;
     }
-    .item-inner {
-        display: block;
+    .navbar:after {
+        display: none;
     }
-    .login {
-        margin: 0;
-        font-size: 16px;
-        color: #333;
+    .tabs-wrap {
+        position: relative;
+        z-index: 2;
+        height: 40px;
+        margin-top: -1px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #d5d5d5;
+        width: 100%;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+        .tabs {
+            overflow-y: hidden;
+            overflow-x: scroll;
+            text-align: center;
+            white-space: nowrap;
+            width: 450px;
+            background-color: #f5f5f5;
+            padding-bottom: 20px;
+            margin-top: -6px;
+        }
     }
-    .name {
-        margin: 0;
-        font-size: 12px;
-        font-weight: normal;
-        color: #767676;
+    .tab.selected {
+        font-weight: 600;
+        color: #c9510c;
     }
-    .info {
-        list-style: none;
-        padding: 0;
-        margin: 7.5px 0 0;
-        li {
-            border: none;
-            margin-bottom: 0;
-            font-size: 12px;
-            line-height: 1.8;
+    .user-item {
+        background-color: #fafafa;
+        display: flex;
+        position: relative;
+        padding: 15px 15px 10px 15px;
+        overflow: visible;
+        line-height: 1.5;
+        border-bottom: 1px solid #ccc;
+        img {
+            width: 110px;
+            height: 110px;
+        }
+        .user-info {
+            padding-left: 15px;
+            .login {
+                margin: 0;
+                font-size: 16px;
+                color: #333;
+            }
+            .name {
+                margin: 0;
+                font-size: 12px;
+                font-weight: normal;
+                color: #767676;
+            }
+            .info {
+                list-style: none;
+                padding: 0;
+                margin: 7.5px 0 0;
+                li {
+                    border: none;
+                    margin-bottom: 0;
+                    font-size: 12px;
+                    line-height: 1.8;
+                }
+            }
+        }
+    }
+    .reps-wrap {
+        padding: 12px 12px 0;
+        .reps-title {
+            font-size: 16px;
+            font-weight: normal
+        }
+        .user-reps {
+            border: 1px solid #ccc;
+            .star-count {
+                margin-bottom: 5px;
+                margin-left: 5px;
+                font-size: 11px;
+                color: #999;
+            }
+            .full-name {
+                margin-bottom: 3px;
+                font-weight: 500;
+                line-height: 1.2;
+                color: #4078c0;
+                word-wrap: break-word;
+                max-width: 80%;
+                white-space: normal;
+                font-size: 14px;
+            }
         }
     }
 }
