@@ -39,12 +39,87 @@ class User extends React.Component {
         clearToolbar();
         this.props.getUser(this.props.params.name);
         this.props.getUserRep(this.props.params.name);
+        this.props.changeActiveName(tabs[0].activeName);
+    }
+
+    changeTabHandler(activeName) {
+        this.props.changeActiveName(activeName);
+    }
+
+    renderOverView(user, reps) {
+        return (
+            <div className='overview'>
+                <div className='user-item'>
+                    <div className='user-img'>
+                        <img src={user.get('avatar_url')} />
+                    </div>
+                    <div className='user-info'>
+                        <h1 className='login'>{user.get('login')}</h1>
+                        <h3 className='name'>{user.get('name')}</h3>
+                        <ul className='info'>
+                            {
+                                user.get('company') &&
+                                <li>{user.get('company')}</li>
+                            }
+
+                            {
+                                user.get('location') &&
+                                <li>{user.get('location')}</li>
+                            }
+
+                            {
+                                user.get('email') &&
+                                <li>{user.get('email')}</li>
+                            }
+
+                            {
+                                user.get('blog') &&
+                                <li>{user.get('blog')}</li>
+                            }
+
+                            {
+                                user.get('bio') &&
+                                <li>{user.get('bio')}</li>
+                            }
+
+                            {
+                                user.get('hireable') &&
+                                <li>{user.get('hireable')}</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className='reps-wrap'>
+                    <h2 className='reps-title'>
+                        Popular repositories
+                    </h2>
+                    <List className='user-reps'>
+                        {
+                            reps.map(rep => (
+                                <Item key={rep.get('id')}>
+                                    <div className='item-inner'>
+                                        <div className='item-title full-name'>
+                                            {rep.get('full_name')}
+                                        </div>
+                                        <div className='item-after star-count'>
+                                            {rep.get('stargazers_count')}
+                                            <span>★</span>
+                                        </div>
+                                    </div>
+                                </Item>
+                            ))
+                        }
+                    </List>
+                </div>
+            </div>
+        );
     }
 
     render() {
         let {
             user,
-            reps
+            reps,
+            activeName
         } = this.props;
 
         return (
@@ -67,79 +142,18 @@ class User extends React.Component {
                             height: 24
                         }
                     }} />
-                {
-                    user &&
+                    <div className='tabs-wrap'>
+                        <Tab
+                            tabs={tabs}
+                            activeName={tabs[0].activeName}
+                            onChange={_activeName => this.changeTabHandler(_activeName)} />
+                    </div>
                     <Content>
-                        <div className='tabs-wrap'>
-                            <Tab
-                                tabs={tabs}
-                                activeName={tabs[0].activeName} />
-                        </div>
-                        <div className='user-item'>
-                            <div className='user-img'>
-                                <img src={user.get('avatar_url')} />
-                            </div>
-                            <div className='user-info'>
-                                <h1 className='login'>{user.get('login')}</h1>
-                                <h3 className='name'>{user.get('name')}</h3>
-                                <ul className='info'>
-                                    {
-                                        user.get('company') &&
-                                        <li>{user.get('company')}</li>
-                                    }
-
-                                    {
-                                        user.get('location') &&
-                                        <li>{user.get('location')}</li>
-                                    }
-
-                                    {
-                                        user.get('email') &&
-                                        <li>{user.get('email')}</li>
-                                    }
-
-                                    {
-                                        user.get('blog') &&
-                                        <li>{user.get('blog')}</li>
-                                    }
-
-                                    {
-                                        user.get('bio') &&
-                                        <li>{user.get('bio')}</li>
-                                    }
-
-                                    {
-                                        user.get('hireable') &&
-                                        <li>{user.get('hireable')}</li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div className='reps-wrap'>
-                            <h2 className='reps-title'>
-                                Popular repositories
-                            </h2>
-                            <List className='user-reps'>
-                                {
-                                    reps &&
-                                    reps.map(rep => (
-                                        <Item key={rep.get('id')}>
-                                            <div className='item-inner'>
-                                                <div className='item-title full-name'>
-                                                    {rep.get('full_name')}
-                                                </div>
-                                                <div className='item-after star-count'>
-                                                    {rep.get('stargazers_count')}
-                                                    <span>★</span>
-                                                </div>
-                                            </div>
-                                        </Item>
-                                    ))
-                                }
-                            </List>
-                        </div>
+                        {
+                            activeName === tabs[0].activeName && user && reps &&
+                            this.renderOverView(user, reps)
+                        }
                     </Content>
-                }
             </div>
         );
     }

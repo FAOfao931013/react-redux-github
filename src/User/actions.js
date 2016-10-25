@@ -3,7 +3,8 @@ import * as actionTypes from './actionTypes';
 
 const {
     USER_INFO,
-    USER_REP
+    USER_REP,
+    USER_ACTIVENAME
 } = actionTypes;
 
 export function getUserAction(user) {
@@ -39,5 +40,13 @@ export function getUserRep(name) {
             .then(res => {
                 dispatch(getUserRepAction(res));
             });
+    };
+}
+
+
+export function changeActiveName(activeName) {
+    return {
+        type: USER_ACTIVENAME,
+        activeName: activeName
     };
 }

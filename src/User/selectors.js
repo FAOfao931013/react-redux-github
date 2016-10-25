@@ -8,19 +8,21 @@ import {
 
 const {
     getUser,
-    getUserRep
+    getUserRep,
+    changeActiveName
 } = actions;
 
 const _getUser = state => state[NAME].get('user');
 const _getUserRep = state => state[NAME].get('reps');
-// const _changeActiveName = state => state[NAME].get('activeName');
+const _changeActiveName = state => state[NAME].get('activeName');
 
 export const getSelector = createSelector(
-    [_getUser, _getUserRep],
-    (user, reps) => {
+    [_getUser, _getUserRep, _changeActiveName],
+    (user, reps, activeName) => {
         return {
             user,
-            reps
+            reps,
+            activeName
         };
     }
 );
@@ -28,7 +30,8 @@ export const getSelector = createSelector(
 export function mapStateToProps(state) {
     return {
         user: getSelector(state).user,
-        reps: getSelector(state).reps
+        reps: getSelector(state).reps,
+        activeName: getSelector(state).activeName,
     };
 }
 
@@ -39,6 +42,9 @@ export function mapDispatchToProps(dispatch) {
         },
         getUserRep(name) {
             dispatch(getUserRep(name));
-        }
+        },
+        changeActiveName(activeName) {
+            dispatch(changeActiveName(activeName));
+        },
     };
 }
