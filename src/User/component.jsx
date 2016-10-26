@@ -45,6 +45,9 @@ class User extends React.Component {
 
     changeTabHandler(activeName) {
         this.props.changeActiveName(activeName);
+        if (activeName === tabs[2].activeName) {
+            this.props.getUserStars(this.props.user.get('starred_url'));
+        }
     }
 
     renderOverView(user, reps) {
@@ -116,7 +119,7 @@ class User extends React.Component {
         );
     }
 
-    getLanguageColor(language) {
+    renderLanguageColor(language) {
         let _color;
         languageColor.map((color, lan) => {
             if (lan === language) _color = color;
@@ -145,7 +148,7 @@ class User extends React.Component {
                                         {rep.get('stargazers_count')}
                                     </div>
                                     <div className='language'>
-                                    {this.getLanguageColor(rep.get('language'))}
+                                    {this.renderLanguageColor(rep.get('language'))}
                                         {rep.get('language')}
                                     </div>
                                 </div>
@@ -158,11 +161,45 @@ class User extends React.Component {
         );
     }
 
+    renderStars(stars) {
+        return (
+            <div className='stars'>
+                <List>
+                    {
+                        stars.map(star => (
+                            <Item key={star.get('id')}>
+                                <div className='item-inner'>
+                                    <div className='item-title full-name'>
+                                        {star.get('full_name')}
+                                    </div>
+                                    <div className='des'>
+                                        {star.get('description')}
+                                    </div>
+                                    <div className='star-language'>
+                                        <div className='star-count'>
+                                            <span>★</span>
+                                            {star.get('stargazers_count')}
+                                        </div>
+                                        <div className='language'>
+                                        {this.renderLanguageColor(star.get('language'))}
+                                            {star.get('language')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </Item>
+                        ))
+                    }
+                </List>
+            </div>
+        );
+    }
+
     render() {
         let {
             user,
             reps,
-            activeName
+            activeName,
+            stars
         } = this.props;
 
         return (
@@ -200,6 +237,11 @@ class User extends React.Component {
                         {
                             activeName === tabs[1].activeName && reps &&
                             this.renderRepos(reps)
+                        }
+
+                        {
+                            activeName === tabs[2].activeName && stars &&
+                            this.renderStars(stars)
                         }
                     </Content>
             </div>

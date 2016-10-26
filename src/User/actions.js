@@ -4,7 +4,8 @@ import * as actionTypes from './actionTypes';
 const {
     USER_INFO,
     USER_REP,
-    USER_ACTIVENAME
+    USER_ACTIVENAME,
+    USER_STARS
 } = actionTypes;
 
 export function getUserAction(user) {
@@ -48,5 +49,24 @@ export function changeActiveName(activeName) {
     return {
         type: USER_ACTIVENAME,
         activeName: activeName
+    };
+}
+
+export function getUserStarsAciton(stars) {
+    return {
+        type:USER_STARS,
+        stars:stars
+    };
+}
+
+export function getUserStars(url) {
+    url = url.substring(0, url.length - 15);
+    const req = new Request(url);
+    return dispatch => {
+        return fetch(req)
+            .then(res => res.json())
+            .then(res => {
+                dispatch(getUserStarsAciton(res));
+            });
     };
 }

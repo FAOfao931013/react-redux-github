@@ -10,13 +10,15 @@ const {
 const {
     USER_INFO,
     USER_REP,
-    USER_ACTIVENAME
+    USER_ACTIVENAME,
+    USER_STARS
 } = actionTypes;
 
 const initialState = Map({
     user: Map(),
     reps: List(),
-    activeName:''
+    activeName: '',
+    stars: List()
 });
 
 function sortNumber(reps) {
@@ -33,8 +35,10 @@ export default (state = initialState, action) => {
         case USER_REP:
             const reps = sortNumber(action.reps);
             return state.set('reps', toImmutable(reps));
-		case USER_ACTIVENAME:
+        case USER_ACTIVENAME:
             return state.set('activeName', action.activeName);
+        case USER_STARS:
+            return state.set('stars', toImmutable(action.stars));
         default:
             return state;
     }
