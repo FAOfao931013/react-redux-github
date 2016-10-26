@@ -5,7 +5,8 @@ const {
     USER_INFO,
     USER_REP,
     USER_ACTIVENAME,
-    USER_STARS
+    USER_STARS,
+    USER_FOLLOWINGS
 } = actionTypes;
 
 export function getUserAction(user) {
@@ -59,14 +60,39 @@ export function getUserStarsAciton(stars) {
     };
 }
 
-export function getUserStars(url) {
-    url = url.substring(0, url.length - 15);
-    const req = new Request(url);
+export function getUserStars(name) {
+    const req = new Request('https://api.github.com/users/' + name + '/starred');
     return dispatch => {
         return fetch(req)
             .then(res => res.json())
             .then(res => {
                 dispatch(getUserStarsAciton(res));
+            });
+    };
+}
+
+export function getUserFollowingsAction(followings) {
+    return {
+        type:USER_FOLLOWINGS,
+        followings:followings
+    };
+}
+
+export function getUserFollowings(name) {
+    const req = new Request('https://api.github.com/users/' + name + '/following');
+    let fol = [];
+    return dispatch => {
+        return fetch(req)
+            .then(res => res.json())
+            .then(res => {
+                res.map(r => {
+                    fetch(r.url)
+                    .then(_res => _res.json())
+                    .then(_res => {
+                        fol.push(_res);
+                        dispatch(getUserFollowingsAction(fol));
+                    });
+                });
             });
     };
 }

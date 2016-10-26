@@ -45,9 +45,15 @@ class User extends React.Component {
 
     changeTabHandler(activeName) {
         this.props.changeActiveName(activeName);
-        if (activeName === tabs[2].activeName) {
-            this.props.getUserStars(this.props.user.get('starred_url'));
-        }
+
+        switch (activeName) {
+            case tabs[2].activeName:
+                this.props.getUserStars(this.props.params.name);
+            case tabs[4].activeName:
+                this.props.getUserFollowings(this.props.params.name);
+            default:
+                return;
+        };
     }
 
     renderOverView(user, reps) {
@@ -194,12 +200,40 @@ class User extends React.Component {
         );
     }
 
+    renderFollowings(followings) {
+        return (
+            <div className='followings'>
+                <List>
+                    {
+                        followings.map(fol => (
+                            <Item key={fol.get('id')}>
+                                <div className='item-media'>
+                                    <img src={fol.get('avatar_url')} />
+                                </div>
+                                <div className='item-inner'>
+                                    <div className='item-title'>
+                                        {fol.get('name')}
+                                        <span>{fol.get('login')}</span>
+                                    </div>
+                                    <div className='location'>
+                                        {fol.get('location')}
+                                    </div>
+                                </div>
+                            </Item>
+                        ))
+                    }
+                </List>
+            </div>
+        );
+    }
+
     render() {
         let {
             user,
             reps,
             activeName,
-            stars
+            stars,
+            followings
         } = this.props;
 
         return (
@@ -242,6 +276,16 @@ class User extends React.Component {
                         {
                             activeName === tabs[2].activeName && stars &&
                             this.renderStars(stars)
+                        }
+
+                        {
+                            // activeName === tabs[3].activeName && stars &&
+                            // this.renderStars(stars)
+                        }
+
+                        {
+                            activeName === tabs[4].activeName && followings &&
+                            this.renderFollowings(followings)
                         }
                     </Content>
             </div>
