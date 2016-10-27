@@ -197,7 +197,8 @@ let languageColor = {
     "cpp": "#f34b7d",
     "AGS Script": "#B9D9FF",
     "Dogescript": "#cca760",
-    "nesC": "#94B0C7"
+    "nesC": "#94B0C7",
+    "C#":"#178600",
 };
 
 languageColor = toImmutable(languageColor);

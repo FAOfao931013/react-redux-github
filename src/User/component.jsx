@@ -139,8 +139,8 @@ class User extends React.Component {
 
     renderRepos(reps) {
         return (
-            <div className='repositories'>
-                <List>
+            // <div className='repositories'>
+                <List className='repositories'>
                 {
                     reps.map(rep => (
                         <Item key={rep.get('id')}>
@@ -163,7 +163,7 @@ class User extends React.Component {
                     ))
                 }
                 </List>
-            </div>
+            // </div>
         );
     }
 
@@ -256,13 +256,13 @@ class User extends React.Component {
                             height: 24
                         }
                     }} />
-                    <div className='tabs-wrap'>
-                        <Tab
-                            tabs={tabs}
-                            activeName={tabs[0].activeName}
-                            onChange={_activeName => this.changeTabHandler(_activeName)} />
-                    </div>
                     <Content>
+                        <div className='tabs-wrap'>
+                            <Tab
+                                tabs={tabs}
+                                activeName={tabs[0].activeName}
+                                onChange={_activeName => this.changeTabHandler(_activeName)} />
+                        </div>
                         {
                             activeName === tabs[0].activeName && user && reps &&
                             this.renderOverView(user, reps)
