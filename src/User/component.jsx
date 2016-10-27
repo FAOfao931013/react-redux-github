@@ -139,91 +139,85 @@ class User extends React.Component {
 
     renderRepos(reps) {
         return (
-            // <div className='repositories'>
-                <List className='repositories'>
+            <List className='repositories'>
+            {
+                reps.map(rep => (
+                    <Item key={rep.get('id')}>
+                        <div className='item-inner'>
+                            <div className='item-title full-name'>
+                                {rep.get('full_name')}
+                            </div>
+                            <div className='star-language'>
+                                <div className='star-count'>
+                                    <span>★</span>
+                                    {rep.get('stargazers_count')}
+                                </div>
+                                <div className='language'>
+                                {this.renderLanguageColor(rep.get('language'))}
+                                    {rep.get('language')}
+                                </div>
+                            </div>
+                        </div>
+                    </Item>
+                ))
+            }
+            </List>
+        );
+    }
+
+    renderStars(stars) {
+        return (
+            <List className='stars'>
                 {
-                    reps.map(rep => (
-                        <Item key={rep.get('id')}>
+                    stars.map(star => (
+                        <Item key={star.get('id')}>
                             <div className='item-inner'>
                                 <div className='item-title full-name'>
-                                    {rep.get('full_name')}
+                                    {star.get('full_name')}
+                                </div>
+                                <div className='des'>
+                                    {star.get('description')}
                                 </div>
                                 <div className='star-language'>
                                     <div className='star-count'>
                                         <span>★</span>
-                                        {rep.get('stargazers_count')}
+                                        {star.get('stargazers_count')}
                                     </div>
                                     <div className='language'>
-                                    {this.renderLanguageColor(rep.get('language'))}
-                                        {rep.get('language')}
+                                    {this.renderLanguageColor(star.get('language'))}
+                                        {star.get('language')}
                                     </div>
                                 </div>
                             </div>
                         </Item>
                     ))
                 }
-                </List>
-            // </div>
-        );
-    }
-
-    renderStars(stars) {
-        return (
-            <div className='stars'>
-                <List>
-                    {
-                        stars.map(star => (
-                            <Item key={star.get('id')}>
-                                <div className='item-inner'>
-                                    <div className='item-title full-name'>
-                                        {star.get('full_name')}
-                                    </div>
-                                    <div className='des'>
-                                        {star.get('description')}
-                                    </div>
-                                    <div className='star-language'>
-                                        <div className='star-count'>
-                                            <span>★</span>
-                                            {star.get('stargazers_count')}
-                                        </div>
-                                        <div className='language'>
-                                        {this.renderLanguageColor(star.get('language'))}
-                                            {star.get('language')}
-                                        </div>
-                                    </div>
-                                </div>
-                            </Item>
-                        ))
-                    }
-                </List>
-            </div>
+            </List>
         );
     }
 
     renderFollowings(followings) {
         return (
-            <div className='followings'>
-                <List>
-                    {
-                        followings.map(fol => (
-                            <Item key={fol.get('id')}>
-                                <div className='item-media'>
-                                    <img src={fol.get('avatar_url')} />
+            <List className='followings'>
+                {
+                    followings.map(fol => (
+                        <Item key={fol.get('id')}>
+                            <div className='item-media'>
+                                <img src={fol.get('avatar_url')} />
+                            </div>
+                            <div className='item-inner'>
+                                <div className='item-title'>
+                                    {fol.get('name')}
+                                    <span>{fol.get('login')}</span>
                                 </div>
-                                <div className='item-inner'>
-                                    <div className='item-title'>
-                                        {fol.get('name')}
-                                        <span>{fol.get('login')}</span>
-                                    </div>
-                                    <div className='location'>
-                                        {fol.get('location')}
-                                    </div>
+                                <div className='location'>
+                                    {fol.get('location')}
                                 </div>
-                            </Item>
-                        ))
-                    }
-                </List>
-            </div>
+                            </div>
+                        </Item>
+                    ))
+                }
+            </List>
         );
     }
 
@@ -279,7 +273,7 @@ class User extends React.Component {
                         }
 
                         {
-                            // activeName === tabs[3].activeName && stars &&
+                            // activeName === tabs[3].activeName && followers &&
                             // this.renderStars(stars)
                         }
 
