@@ -5,6 +5,7 @@ import * as actions from './actions';
 import {
     NAME
 } from './constants';
+import { push } from 'react-router-redux';
 
 const {
     getItems,
@@ -44,6 +45,9 @@ export function mapDispatchToProps(dispatch) {
         },
         getItems(query, type, page) {
             if (query !== '') dispatch(getItems(query, type, page));
+        },
+        gotoUser(name) {
+            dispatch(push('user/' + name));
         }
     };
 }
