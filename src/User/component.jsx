@@ -5,6 +5,7 @@ import Content from 'components/Content';
 import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
+import Placeholder from 'components/Placeholder';
 import languageColor from 'common/languageColor';
 import './style.less';
 
@@ -263,23 +264,35 @@ class User extends React.Component {
                         }
 
                         {
-                            activeName === tabs[1].activeName && reps &&
-                            this.renderRepos(reps)
+                            activeName === tabs[1].activeName && reps ?
+                                reps.size === 0 ?
+                                <Placeholder text={tabs[1].activeName} />
+                                : reps && this.renderRepos(reps)
+                            : null
                         }
 
                         {
-                            activeName === tabs[2].activeName && stars &&
-                            this.renderStars(stars)
+                            activeName === tabs[2].activeName && stars ?
+                                stars.size === 0 ?
+                                <Placeholder text={tabs[2].activeName} />
+                                : stars && this.renderStars(stars)
+                            : null
                         }
 
                         {
-                            // activeName === tabs[3].activeName && followers &&
-                            // this.renderStars(stars)
+                            activeName === tabs[3].activeName ?
+                                user.get('followers') === 0 ?
+                                <Placeholder text={tabs[3].activeName} />
+                                : <div>1</div>// followers && this.renderStars(stars)
+                            : null
                         }
 
                         {
-                            activeName === tabs[4].activeName && followings &&
-                            this.renderFollowings(followings)
+                            activeName === tabs[4].activeName && followings ?
+                                followings.size === 0 ?
+                                <Placeholder text={tabs[4].activeName} />
+                                : followings && this.renderFollowings(followings)
+                            : null
                         }
                     </Content>
             </div>
