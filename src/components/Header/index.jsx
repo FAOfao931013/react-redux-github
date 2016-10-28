@@ -87,4 +87,4 @@ Header.propTypes = {
 };
 
 
-export default connect()(Header);
+export default Header;

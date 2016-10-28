@@ -90,8 +90,8 @@ export function getUserFollowings(name) {
                     .then(_res => _res.json())
                     .then(_res => {
                         fol.push(_res);
-                        dispatch(getUserFollowingsAction(fol));
-                    });
+                    })
+                    .then(() => dispatch(getUserFollowingsAction(fol)));
                 });
             });
     };
