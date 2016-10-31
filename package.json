@@ -5,8 +5,8 @@
   "main": "src/entry.js",
   "dependencies": {
     "babel": "^6.5.2",
-    "babel-cli": "^6.10.1",
     "classnames": "^2.2.5",
+    "colors": "^1.1.2",
     "css-loader": "^0.23.1",
     "eslint-plugin-react": "^5.0.0",
     "framework7": "^1.4.2",
@@ -37,7 +37,6 @@
     "webpack-hot-middleware": "^2.12.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
     "babel-core": "^6.7.6",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
