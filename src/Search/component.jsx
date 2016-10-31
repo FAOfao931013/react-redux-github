@@ -214,7 +214,7 @@ Search.propTypes = {
     item:React.PropTypes.instanceOf(Immutable.List),
     activeName:React.PropTypes.string,
     totalPages:React.PropTypes.number,
-    resetPage:React.PropTypes.bool
+    resetPage:React.PropTypes.bool,
 };
 
 export default Search;

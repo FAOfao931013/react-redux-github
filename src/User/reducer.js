@@ -20,7 +20,7 @@ const initialState = Map({
     reps: List(),
     activeName: '',
     stars: List(),
-    // followings: List()
+    followings: List()
 });
 
 function sortNumber(reps) {
