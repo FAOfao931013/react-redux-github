@@ -301,8 +301,11 @@ class User extends React.Component {
 }
 
 User.propTypes = {
+    activeName: React.PropTypes.string.isRequired,
     user: React.PropTypes.instanceOf(Immutable.Map),
-    reps: React.PropTypes.instanceOf(Immutable.List)
+    reps: React.PropTypes.instanceOf(Immutable.List),
+    stars: React.PropTypes.instanceOf(Immutable.List),
+    followings: React.PropTypes.instanceOf(Immutable.List),
 };
 
 export default User;

@@ -1,14 +1,18 @@
 @import '../less/global.less';
+
 .user {
     .active-state {
         background-color: #bfe5f3;
     }
+
     .navbar-inner {
         background-color: #f5f5f5;
     }
+
     .navbar:after {
         display: none;
     }
+
     .tabs-wrap {
         position: relative;
         z-index: 2;
@@ -19,9 +23,11 @@
         background-color: #f5f5f5;
         border-bottom: 1px solid #d5d5d5;
         width: 100%;
+
         &::-webkit-scrollbar {
             width: 0;
         }
+
         .tabs {
             overflow-y: hidden;
             overflow-x: scroll;
@@ -32,11 +38,14 @@
             padding-bottom: 20px;
             margin-top: -6px;
         }
+
     }
+
     .tab.selected {
         font-weight: 600;
         color: #c9510c;
     }
+
     .user-item {
         background-color: #fafafa;
         display: flex;
@@ -45,53 +54,68 @@
         overflow: visible;
         line-height: 1.5;
         border-bottom: 1px solid #ccc;
+
         img {
             width: 110px;
             height: 110px;
             border-radius: 3px;
         }
+
         .user-info {
             padding-left: 15px;
+
             .login {
                 margin: 0;
                 font-size: 16px;
                 color: #333;
             }
+
             .name {
                 margin: 0;
                 font-size: 12px;
                 font-weight: normal;
                 color: #767676;
             }
+
             .info {
                 list-style: none;
                 padding: 0;
                 margin: 7.5px 0 0;
+
                 li {
                     border: none;
                     margin-bottom: 0;
                     font-size: 12px;
                     line-height: 1.8;
                 }
+
             }
+
         }
+
     }
+
     .reps-wrap {
         padding: 12px 12px 0;
+
         .reps-title {
             font-size: 16px;
             font-weight: normal
         }
+
         .user-reps {
             border: 1px solid #ccc;
         }
+
     }
+
     .star-count {
         margin-bottom: 5px;
         margin-left: 5px;
         font-size: 11px;
         color: #999;
     }
+
     .full-name {
         margin-bottom: 3px;
         font-weight: 500;
@@ -102,37 +126,47 @@
         white-space: normal;
         font-size: 14px;
     }
+
     .repositories,
     .stars {
         .item-inner {
             display: block;
         }
+
     }
+
     .stars {
         .des {
             font-size: 12px;
             color: #767676;
         }
+
     }
+
     .star-language {
         margin-bottom: 5px;
         display: flex;
         font-size: 14px;
+
         .language {
             position: relative;
             padding-left: 35px;
             font-size: 12px;
             line-height: 19px;
         }
+
         .star-count {
             font-size: 14px;
             margin: 0;
             color: #767676;
         }
+
         .full-name {
             max-width: 100%;
         }
+
     }
+
     .language-color {
         position: absolute;
         width: 12px;
@@ -141,32 +175,41 @@
         left: 18px;
         top: 3px;
     }
+
     .followings {
         .item-media {
             position: absolute;
             left: 15px;
         }
+
         .item-inner {
             display: block;
             margin-left: 45px;
             justify-content: flex-start;
+
             .item-title {
                 font-size: 14px;
                 color: #4078c0;
             }
+
             span {
                 font-size: 14px;
                 padding-left: 5px;
                 color: #333;
             }
+
             .location {
                 font-size: 12px;
                 color: #767676;
             }
+
         }
+
         img {
             width: 30px;
             height: 30px;
         }
+
     }
+
 }
