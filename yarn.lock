@@ -173,14 +173,6 @@ async@~0.2.6:
   version "0.2.10"
   resolved "http://registry.npm.taobao.org/async/download/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
 
-asyncawait:
-  version "1.0.6"
-  resolved "http://registry.npm.taobao.org/asyncawait/download/asyncawait-1.0.6.tgz#e446cf54e516a416d7423bbe35bf0b4e2b738b67"
-  dependencies:
-    bluebird "^3.1.1"
-    fibers "^1.0.8"
-    lodash v3.10.1
-
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "http://registry.npm.taobao.org/asynckit/download/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -804,10 +796,6 @@ block-stream@*:
   resolved "http://registry.npm.taobao.org/block-stream/download/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
   dependencies:
     inherits "~2.0.0"
-
-bluebird@^3.1.1:
-  version "3.4.6"
-  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.4.6.tgz#01da8d821d87813d158967e743d5fe6c62cf8c0f"
 
 boom@2.x.x:
   version "2.10.1"
@@ -1622,10 +1610,6 @@ fbjs@^0.8.4:
     object-assign "^4.1.0"
     promise "^7.1.1"
     ua-parser-js "^0.7.9"
-
-fibers@^1.0.8:
-  version "1.0.15"
-  resolved "http://registry.npm.taobao.org/fibers/download/fibers-1.0.15.tgz#22f039c8f18b856190fbbe4decf056154c1eae9c"
 
 filename-regex@^2.0.0:
   version "2.0.0"
@@ -2597,10 +2581,6 @@ lodash@^4.0.0, lodash@^4.1.0, lodash@^4.13.1, lodash@^4.16.2, lodash@^4.2.0, lod
 lodash@4.2.1:
   version "4.2.1"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.2.1.tgz#171fdcfbbc30d689c544cd18c0529f56de6c1aa9"
-
-lodash@v3.10.1:
-  version "3.10.1"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 log-symbols@^1.0.2:
   version "1.0.2"
