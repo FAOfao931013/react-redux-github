@@ -55,8 +55,8 @@ export function changeActiveName(activeName) {
 
 export function getUserStarsAciton(stars) {
     return {
-        type:USER_STARS,
-        stars:stars
+        type: USER_STARS,
+        stars: stars
     };
 }
 
@@ -73,26 +73,45 @@ export function getUserStars(name) {
 
 export function getUserFollowingsAction(followings) {
     return {
-        type:USER_FOLLOWINGS,
-        followings:followings
+        type: USER_FOLLOWINGS,
+        followings: followings
     };
 }
 
 export function getUserFollowings(name) {
     const req = new Request('https://api.github.com/users/' + name + '/following');
-    let fol = [];
+
+    /**
+     * async/await
+     */
     return dispatch => {
         return fetch(req)
             .then(res => res.json())
-            .then(res => {
-                res.map(r => {
-                    fetch(r.url)
-                    .then(_res => _res.json())
-                    .then(_res => {
-                        fol.push(_res);
-                    })
-                    .then(() => dispatch(getUserFollowingsAction(fol)));
+            .then(async(res) => {
+                const getFol = res.map(r => {
+                    return fetch(r.url)
+                        .then(_res => _res.json())
+                        .then(_res => _res);
                 });
+                const result = await Promise.all(getFol);
+                dispatch(getUserFollowingsAction(result));
             });
+
+        /**
+         * promise
+         */
+        // let fol = [];
+        // return fetch(req)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         res.map(r => {
+        //             fetch(r.url)
+        //                 .then(_res => _res.json())
+        //                 .then(_res => {
+        //                     fol.push(_res);
+        //                 })
+        //                 .then(() => dispatch(getUserFollowingsAction(fol)));
+        //         });
+        //     });
     };
 }
