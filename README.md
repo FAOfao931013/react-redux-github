@@ -17,7 +17,13 @@ $ npm run dev
 
 ### 项目说明
 整个项目模仿github移动端的搜索页面
+项目框架采用 react+redux
+数据类型采用 immutable
+请求采用 fetch API
+路由采用 react-router 和 react-router-redux
+样式采用 less
 2016.10.26 新增了用户页面
+2016.11.3 使用 async/await
 
 ### 预览地址
 [https://faofao931013.github.io/react-redux-github/index/#/search](https://faofao931013.github.io/react-redux-github/index/#/search)
