@@ -111,19 +111,23 @@ class User extends React.Component {
                     </h2>
                     <List className='user-reps'>
                         {
-                            reps.map(rep => (
-                                <Item key={rep.get('id')}>
-                                    <div className='item-inner'>
-                                        <div className='item-title full-name'>
-                                            {rep.get('full_name')}
-                                        </div>
-                                        <div className='item-after star-count'>
-                                            {rep.get('stargazers_count')}
-                                            <span>★</span>
-                                        </div>
-                                    </div>
-                                </Item>
-                            ))
+                            reps.map((rep, idx) => {
+                                if (idx <= 5) {
+                                    return (
+                                        <Item key={rep.get('id')}>
+                                            <div className='item-inner'>
+                                                <div className='item-title full-name'>
+                                                    {rep.get('full_name')}
+                                                </div>
+                                                <div className='item-after star-count'>
+                                                    {rep.get('stargazers_count')}
+                                                    <span>★</span>
+                                                </div>
+                                            </div>
+                                        </Item>
+                                    );
+                                };
+                            })
                         }
                     </List>
                 </div>
