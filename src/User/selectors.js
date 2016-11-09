@@ -7,55 +7,69 @@ import {
 } from './constants';
 
 const {
+    changeActiveName,
     getUser,
     getUserRep,
-    changeActiveName,
     getUserStars,
-    getUserFollowings
+    getUserFollowings,
+    getUserFollowers,
 } = actions;
 
+const _changeActiveName = state => state[NAME].get('activeName');
 const _getUser = state => state[NAME].get('user');
 const _getUserRep = state => state[NAME].get('reps');
-const _changeActiveName = state => state[NAME].get('activeName');
 const _getUserStars = state => state[NAME].get('stars');
 const _getUserFollowings = state => state[NAME].get('followings');
+const _getUserFollowers = state => state[NAME].get('followers');
 
 export const getSelector = createSelector(
-    [_getUser, _getUserRep, _changeActiveName, _getUserStars, _getUserFollowings],
-    (user, reps, activeName, stars, followings) => {
+    [
+        _changeActiveName,
+        _getUser,
+        _getUserRep,
+        _getUserStars,
+        _getUserFollowings,
+        _getUserFollowers
+    ],
+    (activeName, user, reps, stars, followings, followers) => {
         return {
+            activeName,
             user,
             reps,
-            activeName,
             stars,
-            followings
+            followings,
+            followers,
         };
     }
 );
 
 export function mapStateToProps(state) {
     return {
+        activeName: getSelector(state).activeName,
         user: getSelector(state).user,
         reps: getSelector(state).reps,
-        activeName: getSelector(state).activeName,
         stars: getSelector(state).stars,
+        followers: getSelector(state).followers,
         followings: getSelector(state).followings,
     };
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
+        changeActiveName(activeName) {
+            dispatch(changeActiveName(activeName));
+        },
         getUser(name) {
             dispatch(getUser(name));
         },
         getUserRep(name) {
             dispatch(getUserRep(name));
         },
-        changeActiveName(activeName) {
-            dispatch(changeActiveName(activeName));
-        },
         getUserStars(name) {
             dispatch(getUserStars(name));
+        },
+        getUserFollowers(name) {
+            dispatch(getUserFollowers(name));
         },
         getUserFollowings(name) {
             dispatch(getUserFollowings(name));

@@ -12,15 +12,17 @@ const {
     USER_REP,
     USER_ACTIVENAME,
     USER_STARS,
-    USER_FOLLOWINGS
+    USER_FOLLOWINGS,
+    USER_FOLLOWERS,
 } = actionTypes;
 
 const initialState = Map({
+    activeName: '',
     user: Map(),
     reps: List(),
-    activeName: '',
     stars: List(),
-    followings: List()
+    followers: List(),
+    followings: List(),
 });
 
 function sortNumber(reps) {
@@ -32,15 +34,17 @@ function sortNumber(reps) {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case USER_ACTIVENAME:
+            return state.set('activeName', action.activeName);
         case USER_INFO:
             return state.set('user', toImmutable(action.user));
         case USER_REP:
             const reps = sortNumber(action.reps);
             return state.set('reps', toImmutable(reps));
-        case USER_ACTIVENAME:
-            return state.set('activeName', action.activeName);
         case USER_STARS:
             return state.set('stars', toImmutable(action.stars));
+        case USER_FOLLOWERS:
+            return state.set('followers', toImmutable(action.followers));
         case USER_FOLLOWINGS:
             return state.set('followings', toImmutable(action.followings));
         default:

@@ -11,6 +11,7 @@ module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').
     ],
     entry: {
         entry: [
+            'babel-polyfill',
             hotMiddlewareScript,
             path.join(__dirname, '../src/entry.js')
         ]
