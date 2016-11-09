@@ -6,7 +6,11 @@ import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
 import Placeholder from 'components/Placeholder';
-import languageColor from 'common/languageColor';
+import OverView from './components/OverView';
+import Repositories from './components/Repositories';
+import Stars from './components/Stars';
+import Followers from './components/Followers';
+import Followings from './components/Followings';
 import './style.less';
 
 const {
@@ -62,200 +66,6 @@ class User extends React.Component {
         };
     }
 
-    renderOverView(user, reps) {
-        return (
-            <div className='overview'>
-                <div className='user-item'>
-                    <div className='user-img'>
-                        <img src={user.get('avatar_url')} />
-                    </div>
-                    <div className='user-info'>
-                        <h1 className='login'>{user.get('login')}</h1>
-                        <h3 className='name'>{user.get('name')}</h3>
-                        <ul className='info'>
-                            {
-                                user.get('company') &&
-                                <li>{user.get('company')}</li>
-                            }
-
-                            {
-                                user.get('location') &&
-                                <li>{user.get('location')}</li>
-                            }
-
-                            {
-                                user.get('email') &&
-                                <li>{user.get('email')}</li>
-                            }
-
-                            {
-                                user.get('blog') &&
-                                <li>{user.get('blog')}</li>
-                            }
-
-                            {
-                                user.get('bio') &&
-                                <li>{user.get('bio')}</li>
-                            }
-
-                            {
-                                user.get('hireable') &&
-                                <li>{user.get('hireable')}</li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-                <div className='reps-wrap'>
-                    <h2 className='reps-title'>
-                        Popular repositories
-                    </h2>
-                    <List className='user-reps'>
-                        {
-                            reps.map((rep, idx) => {
-                                if (idx <= 5) {
-                                    return (
-                                        <Item key={rep.get('id')}>
-                                            <div className='item-inner'>
-                                                <div className='item-title full-name'>
-                                                    {rep.get('full_name')}
-                                                </div>
-                                                <div className='item-after star-count'>
-                                                    {rep.get('stargazers_count')}
-                                                    <span>★</span>
-                                                </div>
-                                            </div>
-                                        </Item>
-                                    );
-                                };
-                            })
-                        }
-                    </List>
-                </div>
-            </div>
-        );
-    }
-
-    renderLanguageColor(language) {
-        let _color;
-        languageColor.map((color, lan) => {
-            if (lan === language) _color = color;
-        });
-        return (
-            <div
-                className='language-color'
-                style={{backgroundColor:_color}}></div>
-        );
-    }
-
-    renderRepos(reps) {
-        return (
-            <List className='repositories'>
-            {
-                reps.map(rep => (
-                    <Item key={rep.get('id')}>
-                        <div className='item-inner'>
-                            <div className='item-title full-name'>
-                                {rep.get('full_name')}
-                            </div>
-                            <div className='star-language'>
-                                <div className='star-count'>
-                                    <span>★</span>
-                                    {rep.get('stargazers_count')}
-                                </div>
-                                <div className='language'>
-                                {this.renderLanguageColor(rep.get('language'))}
-                                    {rep.get('language')}
-                                </div>
-                            </div>
-                        </div>
-                    </Item>
-                ))
-            }
-            </List>
-        );
-    }
-
-    renderStars(stars) {
-        return (
-            <List className='stars'>
-                {
-                    stars.map(star => (
-                        <Item key={star.get('id')}>
-                            <div className='item-inner'>
-                                <div className='item-title full-name'>
-                                    {star.get('full_name')}
-                                </div>
-                                <div className='des'>
-                                    {star.get('description')}
-                                </div>
-                                <div className='star-language'>
-                                    <div className='star-count'>
-                                        <span>★</span>
-                                        {star.get('stargazers_count')}
-                                    </div>
-                                    <div className='language'>
-                                    {this.renderLanguageColor(star.get('language'))}
-                                        {star.get('language')}
-                                    </div>
-                                </div>
-                            </div>
-                        </Item>
-                    ))
-                }
-            </List>
-        );
-    }
-
-    renderFollowers(followers) {
-        return (
-            <List className='followers'>
-                {
-                    followers.map(fol => (
-                        <Item key={fol.get('id')}>
-                            <div className='item-media'>
-                                <img src={fol.get('avatar_url')} />
-                            </div>
-                            <div className='item-inner'>
-                                <div className='item-title'>
-                                    {fol.get('name')}
-                                    <span>{fol.get('login')}</span>
-                                </div>
-                                <div className='location'>
-                                    {fol.get('location')}
-                                </div>
-                            </div>
-                        </Item>
-                    ))
-                }
-            </List>
-        );
-    }
-
-    renderFollowings(followings) {
-        return (
-            <List className='followings'>
-                {
-                    followings.map(fol => (
-                        <Item key={fol.get('id')}>
-                            <div className='item-media'>
-                                <img src={fol.get('avatar_url')} />
-                            </div>
-                            <div className='item-inner'>
-                                <div className='item-title'>
-                                    {fol.get('name')}
-                                    <span>{fol.get('login')}</span>
-                                </div>
-                                <div className='location'>
-                                    {fol.get('location')}
-                                </div>
-                            </div>
-                        </Item>
-                    ))
-                }
-            </List>
-        );
-    }
-
     render() {
         let {
             activeName,
@@ -294,40 +104,38 @@ class User extends React.Component {
                                 onChange={_activeName => this.changeTabHandler(_activeName)} />
                         </div>
                         {
-                            activeName === tabs[0].activeName && user && reps &&
-                            this.renderOverView(user, reps)
+                            activeName === tabs[0].activeName &&
+                            <OverView
+                                user={user}
+                                reps={reps} />
                         }
 
                         {
-                            activeName === tabs[1].activeName && reps ?
-                                reps.size === 0 ?
-                                <Placeholder text={tabs[1].activeName} />
-                                : reps && this.renderRepos(reps)
-                            : null
+                            activeName === tabs[1].activeName &&
+                            <Repositories
+                                reps={reps}
+                                placeholder={activeName} />
                         }
 
                         {
-                            activeName === tabs[2].activeName && stars ?
-                                stars.size === 0 ?
-                                <Placeholder text={tabs[2].activeName} />
-                                : stars && this.renderStars(stars)
-                            : null
+                            activeName === tabs[2].activeName &&
+                            <Stars
+                                stars={stars}
+                                placeholder={activeName} />
                         }
 
                         {
-                            activeName === tabs[3].activeName ?
-                                followers.size === 0 ?
-                                <Placeholder text={tabs[3].activeName} />
-                                : followers && this.renderFollowers(followers)
-                            : null
+                            activeName === tabs[3].activeName &&
+                            <Followers
+                                followers={followers}
+                                placeholder={activeName} />
                         }
 
                         {
-                            activeName === tabs[4].activeName && followings ?
-                                followings.size === 0 ?
-                                <Placeholder text={tabs[4].activeName} />
-                                : followings && this.renderFollowings(followings)
-                            : null
+                            activeName === tabs[4].activeName &&
+                            <Followings
+                                followings={followings}
+                                placeholder={activeName} />
                         }
                     </Content>
             </div>
@@ -337,10 +145,7 @@ class User extends React.Component {
 
 User.propTypes = {
     activeName: React.PropTypes.string.isRequired,
-    user: React.PropTypes.instanceOf(Immutable.Map),
-    reps: React.PropTypes.instanceOf(Immutable.List),
     stars: React.PropTypes.instanceOf(Immutable.List),
-    followers: React.PropTypes.instanceOf(Immutable.List),
     followings: React.PropTypes.instanceOf(Immutable.List),
 };
 
