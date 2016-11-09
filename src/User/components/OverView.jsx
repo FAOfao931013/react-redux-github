@@ -14,7 +14,7 @@ class OverView extends React.Component {
     }
 
     render() {
-        let {
+        const {
             user,
             reps,
         } = this.props;

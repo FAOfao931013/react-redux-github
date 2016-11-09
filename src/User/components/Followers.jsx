@@ -15,7 +15,7 @@ class Followers extends React.Component {
     }
 
     render() {
-        let {
+        const {
             followers,
             placeholder
         } = this.props;

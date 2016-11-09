@@ -59,7 +59,7 @@ class User extends React.Component {
     }
 
     render() {
-        let {
+        const {
             activeName,
             user,
             reps,

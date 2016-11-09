@@ -16,7 +16,7 @@ class Repositories extends React.Component {
     }
 
     render() {
-        let {
+        const {
             reps,
             placeholder
         } = this.props;

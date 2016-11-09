@@ -16,7 +16,7 @@ class Stars extends React.Component {
     }
 
     render() {
-        let {
+        const {
             stars,
             placeholder
         } = this.props;
