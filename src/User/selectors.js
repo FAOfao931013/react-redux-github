@@ -73,6 +73,6 @@ export function mapDispatchToProps(dispatch) {
         },
         getUserFollowings(name) {
             dispatch(getUserFollowings(name));
-        }
+        },
     };
 }

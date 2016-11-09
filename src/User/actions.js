@@ -13,7 +13,7 @@ const {
 export function changeActiveName(activeName) {
     return {
         type: USER_ACTIVENAME,
-        activeName
+        activeName,
     };
 }
 
@@ -56,7 +56,7 @@ export function getUserRep(name) {
 function getUserStarsAciton(stars) {
     return {
         type: USER_STARS,
-        stars
+        stars,
     };
 }
 
@@ -74,7 +74,7 @@ export function getUserStars(name) {
 function getUserFollowersAciton(followers) {
     return {
         type: USER_FOLLOWERS,
-        followers
+        followers,
     };
 }
 
@@ -98,7 +98,7 @@ export function getUserFollowers(name) {
 function getUserFollowingsAction(followings) {
     return {
         type: USER_FOLLOWINGS,
-        followings
+        followings,
     };
 }
 
