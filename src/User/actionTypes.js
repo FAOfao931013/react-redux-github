@@ -3,3 +3,4 @@ export const USER_REP = 'USER_REP';
 export const USER_ACTIVENAME = 'USER_ACTIVENAME';
 export const USER_STARS = 'USER_STARS';
 export const USER_FOLLOWINGS = 'USER_FOLLOWINGS';
+export const USER_FOLLOWERS = 'USER_FOLLOWERS';

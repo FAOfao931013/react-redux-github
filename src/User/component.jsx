@@ -50,8 +50,13 @@ class User extends React.Component {
         switch (activeName) {
             case tabs[2].activeName:
                 this.props.getUserStars(this.props.params.name);
+                break;
+            case tabs[3].activeName:
+                this.props.getUserFollowers(this.props.params.name);
+                break;
             case tabs[4].activeName:
                 this.props.getUserFollowings(this.props.params.name);
+                break;
             default:
                 return;
         };
@@ -197,6 +202,31 @@ class User extends React.Component {
         );
     }
 
+    renderFollowers(followers) {
+        return (
+            <List className='followers'>
+                {
+                    followers.map(fol => (
+                        <Item key={fol.get('id')}>
+                            <div className='item-media'>
+                                <img src={fol.get('avatar_url')} />
+                            </div>
+                            <div className='item-inner'>
+                                <div className='item-title'>
+                                    {fol.get('name')}
+                                    <span>{fol.get('login')}</span>
+                                </div>
+                                <div className='location'>
+                                    {fol.get('location')}
+                                </div>
+                            </div>
+                        </Item>
+                    ))
+                }
+            </List>
+        );
+    }
+
     renderFollowings(followings) {
         return (
             <List className='followings'>
@@ -224,10 +254,11 @@ class User extends React.Component {
 
     render() {
         let {
+            activeName,
             user,
             reps,
-            activeName,
             stars,
+            followers,
             followings
         } = this.props;
 
@@ -281,9 +312,9 @@ class User extends React.Component {
 
                         {
                             activeName === tabs[3].activeName ?
-                                user.get('followers') === 0 ?
+                                followers.size === 0 ?
                                 <Placeholder text={tabs[3].activeName} />
-                                : <div>1</div>// followers && this.renderStars(stars)
+                                : followers && this.renderFollowers(followers)
                             : null
                         }
 
@@ -305,6 +336,7 @@ User.propTypes = {
     user: React.PropTypes.instanceOf(Immutable.Map),
     reps: React.PropTypes.instanceOf(Immutable.List),
     stars: React.PropTypes.instanceOf(Immutable.List),
+    followers: React.PropTypes.instanceOf(Immutable.List),
     followings: React.PropTypes.instanceOf(Immutable.List),
 };
 
