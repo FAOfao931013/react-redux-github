@@ -1,22 +1,14 @@
 import React from 'react';
-import Immutable from 'immutable';
 import Header from 'components/Header';
 import Content from 'components/Content';
-import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
-import Placeholder from 'components/Placeholder';
 import OverView from './components/OverView';
 import Repositories from './components/Repositories';
 import Stars from './components/Stars';
 import Followers from './components/Followers';
 import Followings from './components/Followings';
 import './style.less';
-
-const {
-    List,
-    Item
-} = ListBlock;
 
 const tabs = [{
     activeName: 'overview',
@@ -145,8 +137,6 @@ class User extends React.Component {
 
 User.propTypes = {
     activeName: React.PropTypes.string.isRequired,
-    stars: React.PropTypes.instanceOf(Immutable.List),
-    followings: React.PropTypes.instanceOf(Immutable.List),
 };
 
 export default User;

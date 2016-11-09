@@ -19,8 +19,6 @@ class OverView extends React.Component {
             reps,
         } = this.props;
 
-        console.log(user.toJS());
-
         return (
             <div className='overview'>
                 <div className='user-item'>
