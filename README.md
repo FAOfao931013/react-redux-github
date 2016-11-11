@@ -18,7 +18,7 @@ $ npm run dev
 ### 项目说明
 整个项目模仿github移动端的搜索页面
 
-项目框架采用 react+redux
+项目框架采用 react+redux+framework7
 
 数据类型采用 immutable
 

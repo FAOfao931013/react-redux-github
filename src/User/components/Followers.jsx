@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
-import Placeholder from 'components/Placeholder';
+import UserPlaceholder from 'components/Placeholder/UserPlaceholder';
 
 const {
     List,
@@ -41,7 +41,7 @@ class Followers extends React.Component {
                         </Item>
                     ))
                 }
-            </List> : <Placeholder text={placeholder} />
+            </List> : <UserPlaceholder text={placeholder} />
         );
     }
 }

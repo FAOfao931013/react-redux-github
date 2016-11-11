@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
-import Placeholder from 'components/Placeholder';
+import UserPlaceholder from 'components/Placeholder/UserPlaceholder';
 import LanguageColor from 'components/LanguageColor';
 
 const {
@@ -41,7 +41,7 @@ class Repositories extends React.Component {
                     </Item>
                 ))
             }
-            </List> : <Placeholder text={placeholder} />
+            </List> : <UserPlaceholder text={placeholder} />
         );
     }
 }
