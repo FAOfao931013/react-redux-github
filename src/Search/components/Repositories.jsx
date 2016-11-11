@@ -2,6 +2,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import cutWords from 'common/cutWords';
+import SearchPlaceholder from 'components/Placeholder/SearchPlaceholder';
 
 const {
     List,
@@ -20,6 +21,7 @@ class Repositories extends React.Component {
         } = this.props;
 
         return (
+            items.size !== 0 ?
             <List className='rep-items'>
                 {
                     items.map(rep => (
@@ -42,7 +44,7 @@ class Repositories extends React.Component {
                         </Item>
                     ))
                 }
-            </List>
+            </List> : <SearchPlaceholder />
         );
     }
 }

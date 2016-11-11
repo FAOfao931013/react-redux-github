@@ -1,6 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
+import SearchPlaceholder from 'components/Placeholder/SearchPlaceholder';
 
 const {
     List,
@@ -19,6 +20,7 @@ class Users extends React.Component {
             gotoUser,
         } = this.props;
         return (
+            items.size !== 0 ?
             <List className='users-items'>
                 {
                     items.map(user => (
@@ -35,7 +37,7 @@ class Users extends React.Component {
                         </Item>
                     ))
                 }
-            </List>
+            </List> : <SearchPlaceholder />
         );
     }
 }
