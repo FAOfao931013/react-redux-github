@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { push, go } from 'react-router-redux';
 import Icon from 'components/Icon';
 import './style.less';

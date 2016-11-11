@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function List(props) {
+const List = (props) => {
 
     const cn = classNames('list-block', props.className, {});
 
@@ -12,7 +12,7 @@ function List(props) {
             </ul>
         </div>
     );
-}
+};
 
 List.propTypes = {
     children: React.PropTypes.any
