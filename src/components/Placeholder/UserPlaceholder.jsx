@@ -1,14 +1,11 @@
 import React from 'react';
 import './style.less';
 
-function UserPlaceholder(props) {
-    return (
+const UserPlaceholder = ({text}) =>
         <div className='user-placeholder'>
             <div className='wrap'>
-                <p>You don't have any {props.text} yet.</p>
+                <p>You don't have any {text} yet.</p>
             </div>
-        </div>
-    );
-}
+        </div>;
 
 export default UserPlaceholder;

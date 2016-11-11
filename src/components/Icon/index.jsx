@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 
-function Icon(props) {
+const Icon = (props) => {
 
     const src = '../src/img/icon/' + props.name + '.png';
 
@@ -12,7 +12,7 @@ function Icon(props) {
             style={props.style}
             alt='icon' />
     );
-}
+};
 
 Icon.propTypes = {
     children: React.PropTypes.any

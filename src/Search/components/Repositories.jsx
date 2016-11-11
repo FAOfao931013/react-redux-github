@@ -9,45 +9,33 @@ const {
     Item
 } = ListBlock;
 
-class Repositories extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
-    render() {
-        const {
-            items
-        } = this.props;
-
-        return (
-            items.size !== 0 ?
-            <List className='rep-items'>
-                {
-                    items.map(rep => (
-                        <Item
-                            key={rep.get('id')}>
-                            <div className='item-wrap'>
-                                <div className='title'>{rep.get('full_name')}</div>
-                                <div className='after'>
-                                    {rep.get('stargazers_count')}<span>★</span>
-                                </div>
-                            </div>
+const Repositories = ({
+        items
+    }) =>
+    items.size !== 0 ?
+    <List className='rep-items'>
+        {
+            items.map(rep => (
+                <Item
+                    key={rep.get('id')}>
+                    <div className='item-wrap'>
+                        <div className='title'>{rep.get('full_name')}</div>
+                        <div className='after'>
+                            {rep.get('stargazers_count')}<span>★</span>
+                        </div>
+                    </div>
+                    {
+                        rep.get('description') && rep.get('description') !== '' &&
+                        <div className='des'>
                             {
-                                rep.get('description') && rep.get('description') !== '' &&
-                                <div className='des'>
-                                    {
-                                        cutWords(rep.get('description'), 200)
-                                    }
-                                </div>
+                                cutWords(rep.get('description'), 200)
                             }
-                        </Item>
-                    ))
-                }
-            </List> : <SearchPlaceholder />
-        );
-    }
-}
+                        </div>
+                    }
+                </Item>
+            ))
+        }
+    </List> : <SearchPlaceholder />;
 
 Repositories.propTypes = {
     item: React.PropTypes.instanceOf(Immutable.List),

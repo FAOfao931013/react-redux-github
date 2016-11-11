@@ -1,21 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Item(props) {
+const Item = ({
+	className,
+	media,
+	children,
+}) => {
 
-    const cn = classNames('item-content', props.className, {
-        media: props.media
-    });
+	const cn = classNames('item-content', className, {
+		media: media
+	});
 
-    return (
-        <li className={cn}>
-            {props.children}
-        </li>
-    );
-}
+	return <li className={cn}>{children}</li>;
+};
 
 Item.propTypes = {
-    children: React.PropTypes.any
+	children: React.PropTypes.any
 };
 
 export default Item;
