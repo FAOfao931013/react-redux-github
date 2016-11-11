@@ -22,15 +22,14 @@ class Tab extends React.Component {
 	}
 
 	render() {
-		let {
+		const {
 			tabs
 		} = this.props;
 
 		return (
 			<div className='tabs'>
 				{
-					tabs.map(tab => {
-						return (
+					tabs.map(tab => (
 							<div
 								key={tab.activeName}
 								className={classNames('tab', {
@@ -39,8 +38,8 @@ class Tab extends React.Component {
 								onClick={() => this.changeActiveName(tab.activeName)}>
 								{tab.title}
 							</div>
-						);
-					})
+						)
+					)
 				}
             </div>
 		);
@@ -48,8 +47,8 @@ class Tab extends React.Component {
 }
 
 Tab.porpTypes = {
-	tabs:React.PropTypes.object.isRequired,
-	activeName:React.PropTypes.string.isRequired,
+	tabs: React.PropTypes.object.isRequired,
+	activeName: React.PropTypes.string.isRequired,
 };
 
 export default Tab;
