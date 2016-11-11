@@ -1,21 +1,24 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const List = (props) => {
+const List = ({
+	className,
+	children,
+}) => {
 
-    const cn = classNames('list-block', props.className, {});
+	const cn = classNames('list-block', className, {});
 
-    return (
-        <div className={cn}>
+	return (
+		<div className={cn}>
             <ul>
-                {props.children}
+                {children}
             </ul>
         </div>
-    );
+	);
 };
 
 List.propTypes = {
-    children: React.PropTypes.any
+	children: React.PropTypes.any
 };
 
 export default List;
