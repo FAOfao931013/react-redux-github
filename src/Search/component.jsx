@@ -6,6 +6,9 @@ import ListBlock from 'components/ListBlock';
 import clearToolbar from 'common/clearToolbar';
 import Tab from 'components/Tab';
 import CountPage from 'components/CountPage';
+import Repositories from './components/Repositories';
+import Issues from './components/Issues';
+import Users from './components/Users';
 import './style.less';
 
 const {
@@ -35,74 +38,6 @@ class Search extends React.Component {
         clearToolbar();
     }
 
-    cutWords(string, length) {
-        if (string.length > length) {
-            return string.substring(0, length) + '...';
-        } else {
-            return string;
-        }
-    }
-
-    renderRepositoriesItems(items) {
-        return items.map(rep => (
-            <Item
-                key={rep.get('id')}>
-                <div className='item-wrap'>
-                    <div className='title'>{rep.get('full_name')}</div>
-                    <div className='after'>
-                        {rep.get('stargazers_count')}<span>★</span>
-                    </div>
-                </div>
-                {
-                    rep.get('description') && rep.get('description') !== '' &&
-                    <div className='des'>
-                        {
-                            this.cutWords(rep.get('description'), 200)
-                        }
-                    </div>
-                }
-            </Item>
-        ));
-    }
-
-    renderIssuesItems(items) {
-        return items.map(issue => (
-            <Item
-                key={issue.get('id')}>
-                <div className='item-wrap'>
-                    <div className='title'>{issue.get('title')}</div>
-                    <div className='after'>
-                        <span>#</span>
-                        {issue.get('number')}
-                    </div>
-                </div>
-                {
-                    issue.get('body') && issue.get('body') !== '' &&
-                    <div className='des'>
-                        {
-                            this.cutWords(issue.get('body'), 200)
-                        }
-                    </div>
-                }
-            </Item>
-        ));
-    }
-
-    renderUserItems(items) {
-        return items.map(user => (
-            <Item key={user.get('id')} media>
-                <div className='item-media'>
-                    <img src={user.get('avatar_url')} />
-                </div>
-                <div className='item-inner'>
-                    <div
-                        className='item-title'
-                        onClick={() => this.props.gotoUser(user.get('login'))}>{user.get('login')}</div>
-                </div>
-            </Item>
-        ));
-    }
-
     keyUpHandler(e) {
 
         if (e.keyCode === 13) {
@@ -128,7 +63,8 @@ class Search extends React.Component {
             items,
             activeName,
             totalPages,
-            resetPage
+            resetPage,
+            gotoUser,
         } = this.props;
 
         return (
@@ -171,30 +107,22 @@ class Search extends React.Component {
                         onChange={_activeName => this.changeTabHandler(_activeName)} />
 
                     {
-                        activeName === tabs[0].activeName && items &&
-                        <List className='rep-items'>
-                            {
-                                items.size > 0 && this.renderRepositoriesItems(items)
-                            }
-                        </List>
+                        activeName === tabs[0].activeName &&
+                        <Repositories
+                            items={items} />
                     }
 
                     {
-                        activeName === tabs[1].activeName && items &&
-                        <List className='issues-items'>
-                            {
-                                items.size > 0 && this.renderIssuesItems(items)
-                            }
-                        </List>
+                        activeName === tabs[1].activeName &&
+                        <Issues
+                            items={items} />
                     }
 
                     {
-                        activeName === tabs[2].activeName && items &&
-                        <List className='users-items'>
-                            {
-                                items.size > 0 && this.renderUserItems(items)
-                            }
-                        </List>
+                        activeName === tabs[2].activeName &&
+                        <Users
+                            items={items}
+                            gotoUser={gotoUser} />
                     }
 
                     {
