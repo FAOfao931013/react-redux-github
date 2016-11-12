@@ -23,13 +23,24 @@ export function changeActiveName(activeName) {
 
 export function getItems(query, type, page = 1) {
     const req = new Request('https://api.github.com/search/' + type + '?q=' + query + '&page=' + page, {
-        method:'GET'
+        method: 'GET'
     });
+
     return dispatch => {
         return fetch(req)
             .then(res => res.json())
-            .then(res => {
-                dispatch(getItemsAction(res.items, res.total_count));
+            .then(async(res) => {
+                if (type === 'users') {
+                    const getUsers = res.items.map(r => {
+                        return fetch(r.url)
+                            .then(_res => _res.json())
+                            .then(_res => _res);
+                    });
+                    const result = await Promise.all(getUsers);
+                    dispatch(getItemsAction(result, res.total_count));
+                } else {
+                    dispatch(getItemsAction(res.items, res.total_count));
+                }
             });
     };
 }

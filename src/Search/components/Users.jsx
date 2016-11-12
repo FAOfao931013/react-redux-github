@@ -16,14 +16,21 @@ const Users = ({
     <List className='users-items'>
         {
             items.map(user => (
-                <Item key={user.get('id')} media>
+                <Item
+                    key={user.get('id')}
+                    media>
                     <div className='item-media'>
                         <img src={user.get('avatar_url')} />
                     </div>
                     <div className='item-inner'>
                         <div
                             className='item-title'
-                            onClick={() => gotoUser(user.get('login'))}>{user.get('login')}
+                            onClick={() => gotoUser(user.get('login'))}>
+                            {user.get('login')}
+                            <span className='name'>{user.get('name')}</span>
+                        </div>
+                        <div className='location'>
+                            {user.get('location')}
                         </div>
                     </div>
                 </Item>

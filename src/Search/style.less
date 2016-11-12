@@ -1,58 +1,75 @@
 @import '../less/global.less';
+
 .search {
     .search-input {
         border-bottom: none;
         background-color: #fafafa;
+
         .item-input {
             padding: 10px;
         }
+
         input {
             padding: 10px;
             border: solid #ddd 1px;
         }
+
     }
+
     .tabs {
         .tab {
             color: #4078c0;
             border-bottom: 1px solid #ddd;
         }
+
         .tab[class*=selected] {
             color: #444;
             background-color: #fff;
             border-top: 2px solid #d26911;
             border-bottom-color: #fff;
         }
+
         .selected:nth-child(1) {
             border-right: 1px solid #ddd;
         }
+
         .selected:nth-child(2) {
             border-right: 1px solid #ddd;
             border-left: 1px solid #ddd;
         }
+
         .selected:nth-child(3) {
             border-left: 1px solid #ddd;
         }
+
     }
+
     .item-content {
         width: 100%;
         padding: 14px 15px 14px 35px;
     }
+
     .item-wrap {
         display: flex;
         justify-content: space-between;
         margin-bottom: 3px;
         font-size: 14px;
+
         .title {
             color: #4078c0;
         }
+
         .after {
             color: #999;
         }
+
         .des {
             font-size: 12px;
             color: #767676;
         }
+
     }
+
     .rep-items,
     .issues-items {
         .des {
@@ -60,24 +77,44 @@
             color: #767676;
             word-wrap: break-word;
         }
+
     }
+
     .users-items {
         .item-content.media {
             position: relative;
         }
+
         .item-inner {
+            display: block;
             margin-left: 45px;
             color: #4078c0;
             font-size: 16px;
+
+            .name {
+                color: #333;
+                margin-left: 10px;
+            }
+
+            .location {
+                font-size: 14px;
+                color: #767676;
+            }
+
         }
+
         .item-media {
             position: absolute;
             left: 15px;
+
             img {
                 width: 50px;
                 height: 50px;
                 border-radius: 30px;
             }
+
         }
+
     }
+
 }
