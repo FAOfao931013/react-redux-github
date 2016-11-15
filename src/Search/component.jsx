@@ -59,7 +59,7 @@ class Search extends React.Component {
     }
 
     render() {
-        let {
+        const {
             items,
             activeName,
             totalPages,
