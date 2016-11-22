@@ -65,7 +65,8 @@ class User extends React.Component {
             reps,
             stars,
             followers,
-            followings
+            followings,
+            isFetching
         } = this.props;
 
         return (
@@ -99,35 +100,40 @@ class User extends React.Component {
                             activeName === tabs[0].activeName &&
                             <OverView
                                 user={user}
-                                reps={reps} />
+                                reps={reps}
+                                isFetching={isFetching} />
                         }
 
                         {
                             activeName === tabs[1].activeName &&
                             <Repositories
                                 reps={reps}
-                                placeholder={activeName} />
+                                placeholder={activeName}
+                                isFetching={isFetching} />
                         }
 
                         {
                             activeName === tabs[2].activeName &&
                             <Stars
                                 stars={stars}
-                                placeholder={activeName} />
+                                placeholder={activeName}
+                                isFetching={isFetching} />
                         }
 
                         {
                             activeName === tabs[3].activeName &&
                             <Followers
                                 followers={followers}
-                                placeholder={activeName} />
+                                placeholder={activeName}
+                                isFetching={isFetching} />
                         }
 
                         {
                             activeName === tabs[4].activeName &&
                             <Followings
                                 followings={followings}
-                                placeholder={activeName} />
+                                placeholder={activeName}
+                                isFetching={isFetching} />
                         }
                     </Content>
             </div>

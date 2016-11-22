@@ -21,6 +21,7 @@ const _getUserRep = state => state[NAME].get('reps');
 const _getUserStars = state => state[NAME].get('stars');
 const _getUserFollowings = state => state[NAME].get('followings');
 const _getUserFollowers = state => state[NAME].get('followers');
+const _getIsFetching = state => state[NAME].get('isFetching');
 
 export const getSelector = createSelector(
     [
@@ -29,9 +30,18 @@ export const getSelector = createSelector(
         _getUserRep,
         _getUserStars,
         _getUserFollowings,
-        _getUserFollowers
+        _getUserFollowers,
+        _getIsFetching,
     ],
-    (activeName, user, reps, stars, followings, followers) => {
+    (
+        activeName,
+        user,
+        reps,
+        stars,
+        followings,
+        followers,
+        isFetching,
+    ) => {
         return {
             activeName,
             user,
@@ -39,6 +49,7 @@ export const getSelector = createSelector(
             stars,
             followings,
             followers,
+            isFetching,
         };
     }
 );
@@ -51,6 +62,7 @@ export function mapStateToProps(state) {
         stars: getSelector(state).stars,
         followers: getSelector(state).followers,
         followings: getSelector(state).followings,
+        isFetching: getSelector(state).isFetching,
     };
 }
 

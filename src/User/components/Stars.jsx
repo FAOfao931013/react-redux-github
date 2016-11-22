@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import UserPlaceholder from 'components/Placeholder/UserPlaceholder';
 import LanguageColor from 'components/LanguageColor';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -12,7 +13,9 @@ const {
 const Stars = ({
         stars,
         placeholder,
+        isFetching,
     }) =>
+    isFetching ? <Loading /> :
     stars.size !== 0 ?
     <List className='stars'>
         {

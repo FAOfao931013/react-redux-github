@@ -14,6 +14,7 @@ const {
     USER_STARS,
     USER_FOLLOWINGS,
     USER_FOLLOWERS,
+    REQUEST_POSTS,
 } = actionTypes;
 
 const initialState = Map({
@@ -23,6 +24,7 @@ const initialState = Map({
     stars: List(),
     followers: List(),
     followings: List(),
+    isFetching: false,
 });
 
 function sortNumber(reps) {
@@ -34,19 +36,31 @@ function sortNumber(reps) {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case REQUEST_POSTS:
+            return state.set('isFetching', action.isFetching);
         case USER_ACTIVENAME:
             return state.set('activeName', action.activeName);
         case USER_INFO:
-            return state.set('user', toImmutable(action.user));
+            return state
+                .set('user', toImmutable(action.user))
+                .set('isFetching', action.isFetching);
         case USER_REP:
             const reps = sortNumber(action.reps);
-            return state.set('reps', toImmutable(reps));
+            return state
+                .set('reps', toImmutable(reps))
+                .set('isFetching', action.isFetching);
         case USER_STARS:
-            return state.set('stars', toImmutable(action.stars));
+            return state
+                .set('stars', toImmutable(action.stars))
+                .set('isFetching', action.isFetching);
         case USER_FOLLOWERS:
-            return state.set('followers', toImmutable(action.followers));
+            return state
+                .set('followers', toImmutable(action.followers))
+                .set('isFetching', action.isFetching);
         case USER_FOLLOWINGS:
-            return state.set('followings', toImmutable(action.followings));
+            return state
+                .set('followings', toImmutable(action.followings))
+                .set('isFetching', action.isFetching);
         default:
             return state;
     }

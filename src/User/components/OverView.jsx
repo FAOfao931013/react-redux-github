@@ -1,6 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -10,7 +11,9 @@ const {
 const OverView = ({
         user,
         reps,
+        isFetching
     }) =>
+    isFetching ? <Loading /> :
     <div className='overview'>
         <div className='user-item'>
             <div className='user-img'>
