@@ -72,7 +72,7 @@ class User extends React.Component {
             stars,
             followers,
             followings,
-            isFetching
+            isFetching,
         } = this.props;
 
         return (

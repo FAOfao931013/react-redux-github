@@ -15,9 +15,11 @@ class CountPage extends React.Component {
     }
 
     componentWillReceiveProps(nextPros) {
-        this.setState({
-            page: nextPros.reset ? 1 : this.state.page
-        });
+        if (nextPros.reset) {
+            this.setState({
+                page: 1
+            });
+        }
     }
 
     addPage() {
@@ -52,11 +54,11 @@ class CountPage extends React.Component {
 
     render() {
 
-        let {
+        const {
             page
             } = this.state;
 
-        let {
+        const {
             min,
             max
             } = this.props;
@@ -67,14 +69,14 @@ class CountPage extends React.Component {
                     className={classNames('col-33', {
                         disabled:page <= min
                     })}
-                    onClick={this.minusPage}>◀︎
+                    onClick={() => this.minusPage()}>◀︎
                 </div>
                 <div className='col-33 current-page'>{page + '/' + max}</div>
                 <div
                     className={classNames('col-33', {
                         disabled:page >= max
                     })}
-                    onClick={this.addPage}>▶︎
+                    onClick={() => this.addPage()}>▶︎
                 </div>
             </div>
         );
@@ -84,7 +86,7 @@ class CountPage extends React.Component {
 CountPage.porpTypes = {
     min: React.PropTypes.number,
     max: React.PropTypes.number.isRequired,
-    reset: React.PropTypes.boolen
+    reset: React.PropTypes.bool,
 };
 
 CountPage.defaultProps = {

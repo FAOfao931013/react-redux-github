@@ -27,6 +27,9 @@ export default (state = initialState, action) => {
             return state.set('isFetching', action.isFetching);
         case SEARCH_ITEMS:
             let totalPages;
+            /**
+             * 判断是否是第一次取得totalPages
+             */
             if (state.get('totalPages') === 0) {
                 if (action.totalCount === action.items.length) {
                     totalPages = 1;
