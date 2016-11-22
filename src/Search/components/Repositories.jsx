@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import cutWords from 'common/cutWords';
 import SearchPlaceholder from 'components/Placeholder/SearchPlaceholder';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -10,8 +11,10 @@ const {
 } = ListBlock;
 
 const Repositories = ({
-        items
+        items,
+        isFetching,
     }) =>
+    isFetching ? <Loading /> :
     items.size !== 0 ?
     <List className='rep-items'>
         {

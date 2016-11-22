@@ -5,7 +5,9 @@ import * as actions from './actions';
 import {
     NAME
 } from './constants';
-import { push } from 'react-router-redux';
+import {
+    push
+} from 'react-router-redux';
 
 const {
     getItems,
@@ -16,15 +18,17 @@ const _getItems = state => state[NAME].get('items');
 const _changeActiveName = state => state[NAME].get('activeName');
 const _getTotalPages = state => state[NAME].get('totalPages');
 const _resetPage = state => state[NAME].get('resetPage');
+const _getIsFetching = state => state[NAME].get('isFetching');
 
 export const getSelector = createSelector(
-    [_getItems, _changeActiveName, _getTotalPages, _resetPage],
-    (items, activeName, totalPages, resetPage) => {
+    [_getItems, _changeActiveName, _getTotalPages, _resetPage, _getIsFetching],
+    (items, activeName, totalPages, resetPage, isFetching) => {
         return {
             items,
             activeName,
             totalPages,
-            resetPage
+            resetPage,
+            isFetching,
         };
     }
 );
@@ -35,6 +39,7 @@ export function mapStateToProps(state) {
         activeName: getSelector(state).activeName,
         totalPages: getSelector(state).totalPages,
         resetPage: getSelector(state).resetPage,
+        isFetching: getSelector(state).isFetching,
     };
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import SearchPlaceholder from 'components/Placeholder/SearchPlaceholder';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -11,7 +12,9 @@ const {
 const Users = ({
         items,
         gotoUser,
+        isFetching,
     }) =>
+    isFetching ? <Loading /> :
     items.size !== 0 ?
     <List className='users-items'>
         {

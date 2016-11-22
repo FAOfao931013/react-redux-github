@@ -3,30 +3,41 @@ import * as actionTypes from './actionTypes';
 
 const {
     SEARCH_ITEMS,
-    SEARCH_ACTIVENAME
+    SEARCH_ACTIVENAME,
+    REQUEST_POSTS,
 } = actionTypes;
 
 export function getItemsAction(items, totalCount) {
     return {
         type: SEARCH_ITEMS,
         items: items,
-        totalCount: totalCount
+        totalCount: totalCount,
+        isFetching: false,
     };
 }
 
 export function changeActiveName(activeName) {
     return {
         type: SEARCH_ACTIVENAME,
-        activeName: activeName
+        activeName: activeName,
+    };
+}
+
+export function requestPosts() {
+    return {
+        type: REQUEST_POSTS,
+        isFetching: true,
     };
 }
 
 export function getItems(query, type, page = 1) {
-    const req = new Request('https://api.github.com/search/' + type + '?q=' + query + '&page=' + page, {
+    const url = 'https://api.github.com/search/' + type + '?q=' + query + '&page=' + page;
+    const req = new Request(url, {
         method: 'GET'
     });
 
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(async(res) => {
