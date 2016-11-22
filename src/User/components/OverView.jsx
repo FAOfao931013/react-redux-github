@@ -82,6 +82,7 @@ const OverView = ({
 OverView.propTypes = {
     user: React.PropTypes.instanceOf(Immutable.Map),
     reps: React.PropTypes.instanceOf(Immutable.List),
+    isFetching: React.PropTypes.bool,
 };
 
 export default OverView;

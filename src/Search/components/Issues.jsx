@@ -43,6 +43,7 @@ const Issues = ({
 
 Issues.propTypes = {
     item: React.PropTypes.instanceOf(Immutable.List),
+    isFetching: React.PropTypes.bool,
 };
 
 export default Issues;

@@ -41,6 +41,7 @@ const Repositories = ({
 Repositories.propTypes = {
     reps: React.PropTypes.instanceOf(Immutable.List),
     placeholder: React.PropTypes.string,
+    isFetching: React.PropTypes.bool,
 };
 
 export default Repositories;

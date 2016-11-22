@@ -40,6 +40,7 @@ const Followings = ({
 Followings.propTypes = {
     followings: React.PropTypes.instanceOf(Immutable.List),
     placeholder: React.PropTypes.string,
+    isFetching: React.PropTypes.bool,
 };
 
 export default Followings;

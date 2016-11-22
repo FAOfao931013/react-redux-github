@@ -44,6 +44,12 @@ class User extends React.Component {
         this.props.changeActiveName(activeName);
 
         switch (activeName) {
+            case tabs[0].activeName:
+                this.props.getUser(this.props.params.name);
+                break;
+            case tabs[1].activeName:
+                this.props.getUserRep(this.props.params.name);
+                break;
             case tabs[2].activeName:
                 this.props.getUserStars(this.props.params.name);
                 break;

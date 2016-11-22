@@ -44,6 +44,7 @@ const Stars = ({
 Stars.propTypes = {
     stars: React.PropTypes.instanceOf(Immutable.List),
     placeholder: React.PropTypes.string,
+    isFetching: React.PropTypes.bool,
 };
 
 export default Stars;
