@@ -59,12 +59,13 @@ class Search extends React.Component {
     }
 
     render() {
-        let {
+        const {
             items,
             activeName,
             totalPages,
             resetPage,
             gotoUser,
+            isFetching,
         } = this.props;
 
         return (
@@ -109,20 +110,23 @@ class Search extends React.Component {
                     {
                         activeName === tabs[0].activeName &&
                         <Repositories
-                            items={items} />
+                            items={items}
+                            isFetching={isFetching} />
                     }
 
                     {
                         activeName === tabs[1].activeName &&
                         <Issues
-                            items={items} />
+                            items={items}
+                            isFetching={isFetching} />
                     }
 
                     {
                         activeName === tabs[2].activeName &&
                         <Users
                             items={items}
-                            gotoUser={gotoUser} />
+                            gotoUser={gotoUser}
+                            isFetching={isFetching} />
                     }
 
                     {

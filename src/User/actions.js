@@ -8,6 +8,7 @@ const {
     USER_STARS,
     USER_FOLLOWINGS,
     USER_FOLLOWERS,
+    REQUEST_POSTS,
 } = actionTypes;
 
 export function changeActiveName(activeName) {
@@ -17,16 +18,25 @@ export function changeActiveName(activeName) {
     };
 }
 
+export function requestPosts() {
+    return {
+        type: REQUEST_POSTS,
+        isFetching: true,
+    };
+}
+
 function getUserAction(user) {
     return {
         type: USER_INFO,
         user,
+        isFetching: false,
     };
 }
 
 export function getUser(name) {
     const req = new Request('https://api.github.com/users/' + name);
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(res => {
@@ -39,12 +49,14 @@ function getUserRepAction(reps) {
     return {
         type: USER_REP,
         reps,
+        isFetching: false,
     };
 }
 
 export function getUserRep(name) {
     const req = new Request('https://api.github.com/users/' + name + '/repos');
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(res => {
@@ -57,12 +69,14 @@ function getUserStarsAciton(stars) {
     return {
         type: USER_STARS,
         stars,
+        isFetching: false,
     };
 }
 
 export function getUserStars(name) {
     const req = new Request('https://api.github.com/users/' + name + '/starred');
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(res => {
@@ -75,12 +89,14 @@ function getUserFollowersAciton(followers) {
     return {
         type: USER_FOLLOWERS,
         followers,
+        isFetching: false,
     };
 }
 
 export function getUserFollowers(name) {
     const req = new Request('https://api.github.com/users/' + name + '/followers');
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(async(res) => {
@@ -99,6 +115,7 @@ function getUserFollowingsAction(followings) {
     return {
         type: USER_FOLLOWINGS,
         followings,
+        isFetching: false,
     };
 }
 
@@ -109,6 +126,7 @@ export function getUserFollowings(name) {
      * async/await
      */
     return dispatch => {
+        dispatch(requestPosts());
         return fetch(req)
             .then(res => res.json())
             .then(async(res) => {

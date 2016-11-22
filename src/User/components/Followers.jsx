@@ -2,6 +2,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import UserPlaceholder from 'components/Placeholder/UserPlaceholder';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -11,7 +12,9 @@ const {
 const Followers = ({
         followers,
         placeholder,
+        isFetching,
     }) =>
+    isFetching ? <Loading /> :
     followers.size !== 0 ?
     <List className='followers'>
         {
@@ -37,6 +40,7 @@ const Followers = ({
 Followers.propTypes = {
     followers: React.PropTypes.instanceOf(Immutable.List),
     placeholder: React.PropTypes.string,
+    isFetching: React.PropTypes.bool,
 };
 
 export default Followers;

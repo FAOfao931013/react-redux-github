@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import ListBlock from 'components/ListBlock';
 import UserPlaceholder from 'components/Placeholder/UserPlaceholder';
 import LanguageColor from 'components/LanguageColor';
+import Loading from 'components/Loading';
 
 const {
     List,
@@ -12,7 +13,9 @@ const {
 const Repositories = ({
         reps,
         placeholder,
+        isFetching,
     }) =>
+    isFetching ? <Loading /> :
     reps.size !== 0 ?
     <List className='repositories'>
         {
@@ -38,6 +41,7 @@ const Repositories = ({
 Repositories.propTypes = {
     reps: React.PropTypes.instanceOf(Immutable.List),
     placeholder: React.PropTypes.string,
+    isFetching: React.PropTypes.bool,
 };
 
 export default Repositories;
