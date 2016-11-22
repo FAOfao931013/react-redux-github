@@ -3513,10 +3513,6 @@ react-json-tree@^0.7.3:
     react-base16-styling "^0.2.3"
     react-pure-render "^1.0.2"
 
-react-loading:
-  version "0.0.9"
-  resolved "http://registry.npm.taobao.org/react-loading/download/react-loading-0.0.9.tgz#e9fba6948915ba7742a508193828b6c73eb04956"
-
 react-mixin@^1.7.0:
   version "1.7.0"
   resolved "http://registry.npm.taobao.org/react-mixin/download/react-mixin-1.7.0.tgz#38c22c3eb02064f08f2c25878a60dac3e956f44c"
