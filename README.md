@@ -33,5 +33,9 @@ $ npm run dev
 
 2016.11.3 使用 async/await
 
+2016.11.11 采用函数式无状态组件写法
+
+2016.11.22 增加loading动画
+
 ### 预览地址
 [https://faofao931013.github.io/react-redux-github/index/#/search](https://faofao931013.github.io/react-redux-github/index/#/search)
