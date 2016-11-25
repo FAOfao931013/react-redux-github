@@ -1,10 +1,14 @@
 import React from 'react';
+import classnames from 'classnames';
 import './style.less';
 
-const Content = (props) => <div className='page-content'>{props.children}</div>;
+const Content = props =>
+	<div {...props} className={classnames('page-content', props.className)} >
+		{props.children}
+	</div>;
 
 Content.propTypes = {
-    children: React.PropTypes.any.isRequired
+	children: React.PropTypes.any.isRequired
 };
 
 export default Content;
