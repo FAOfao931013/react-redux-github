@@ -8,7 +8,8 @@ var paths = {
     reducers: path.join(__dirname, '../src/reducers'),
     routes: path.join(__dirname, '../src/routes'),
     common: path.join(__dirname, '../src/common'),
-    localStore: path.join(__dirname, '../node_modules/store/store.js')
+    localStore: path.join(__dirname, '../node_modules/store/store.js'),
+    middleware: path.join(__dirname, '../src/middleware'),
 };
 
 var config = {
@@ -66,7 +67,8 @@ var config = {
             'reducers': paths.reducers,
             'routes': paths.routes,
             'common': paths.common,
-            'localStore': paths.localStore
+            'localStore': paths.localStore,
+            'middleware': paths.middleware,
         }
     },
     plugins: []

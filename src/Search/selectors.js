@@ -21,8 +21,20 @@ const _resetPage = state => state[NAME].get('resetPage');
 const _getIsFetching = state => state[NAME].get('isFetching');
 
 export const getSelector = createSelector(
-    [_getItems, _changeActiveName, _getTotalPages, _resetPage, _getIsFetching],
-    (items, activeName, totalPages, resetPage, isFetching) => {
+    [
+        _getItems,
+        _changeActiveName,
+        _getTotalPages,
+        _resetPage,
+        _getIsFetching
+    ],
+    (
+        items,
+        activeName,
+        totalPages,
+        resetPage,
+        isFetching
+    ) => {
         return {
             items,
             activeName,

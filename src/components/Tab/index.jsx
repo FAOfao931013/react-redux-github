@@ -23,7 +23,8 @@ class Tab extends React.Component {
 
 	render() {
 		const {
-			tabs
+			tabs,
+			isFetching,
 		} = this.props;
 
 		return (
@@ -35,7 +36,8 @@ class Tab extends React.Component {
 								className={classNames('tab', {
                                         selected:this.state.activeName === tab.activeName
                                     })}
-								onClick={() => this.changeActiveName(tab.activeName)}>
+								onClick={() => this.changeActiveName(tab.activeName)}
+								disabled={isFetching}>
 								{tab.title}
 							</div>
 						)
@@ -49,6 +51,11 @@ class Tab extends React.Component {
 Tab.porpTypes = {
 	tabs: React.PropTypes.object.isRequired,
 	activeName: React.PropTypes.string.isRequired,
+	isFetching: React.PropTypes.bool,
+};
+
+Tab.defaultProps = {
+	isFetching: false,
 };
 
 export default Tab;

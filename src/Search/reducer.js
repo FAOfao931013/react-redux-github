@@ -8,9 +8,10 @@ const {
 } = Immutable;
 
 const {
-    SEARCH_ITEMS,
     SEARCH_ACTIVENAME,
-    REQUEST_POSTS,
+    SEARCH_REQUEST,
+    SEARCH_SUCCESS,
+    SEARCH_FAILURE,
 } = actionTypes;
 
 const initialState = Map({
@@ -18,38 +19,42 @@ const initialState = Map({
     activeName: '',
     totalPages: 0,
     resetPage: false,
-    isFetching: true,
+    isFetching: false,
+    error: ''
 });
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_POSTS:
+        case SEARCH_REQUEST:
             return state.set('isFetching', action.isFetching);
-        case SEARCH_ITEMS:
-            let totalPages;
+        case SEARCH_SUCCESS:
+            let totalPages,
+                result = action.result;
             /**
              * 判断是否是第一次取得totalPages
              */
             if (state.get('totalPages') === 0) {
-                if (action.totalCount === action.items.length) {
+                if (result.totalCount === result.items.length) {
                     totalPages = 1;
                 } else {
-                    totalPages = Number((action.totalCount / action.items.length).toFixed(0)) + 1;
+                    totalPages = Number((result.totalCount / result.items.length).toFixed(0)) + 1;
                 }
             } else {
                 totalPages = state.get('totalPages');
             }
 
             return state
-                .set('items', toImmutable(action.items))
+                .set('items', toImmutable(result.items))
                 .set('totalPages', totalPages)
                 .set('resetPage', false)
-                .set('isFetching', action.isFetching);
+                .set('isFetching', result.isFetching);
         case SEARCH_ACTIVENAME:
             return state
                 .set('activeName', action.activeName)
                 .set('totalPages', 0)
                 .set('resetPage', true);
+        case SEARCH_FAILURE:
+            return state.set('error', action.error);
         default:
             return state;
     }

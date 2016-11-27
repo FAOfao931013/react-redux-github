@@ -105,7 +105,8 @@ class Search extends React.Component {
                     <Tab
                         tabs={tabs}
                         activeName={tabs[2].activeName}
-                        onChange={_activeName => this.changeTabHandler(_activeName)} />
+                        onChange={_activeName => this.changeTabHandler(_activeName)}
+                        isFetching={isFetching} />
 
                     {
                         activeName === tabs[0].activeName &&
@@ -143,10 +144,10 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-    item:React.PropTypes.instanceOf(Immutable.List),
-    activeName:React.PropTypes.string,
-    totalPages:React.PropTypes.number,
-    resetPage:React.PropTypes.bool,
+    item: React.PropTypes.instanceOf(Immutable.List),
+    activeName: React.PropTypes.string,
+    totalPages: React.PropTypes.number,
+    resetPage: React.PropTypes.bool,
 };
 
 export default Search;

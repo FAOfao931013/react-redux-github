@@ -8,13 +8,14 @@ const {
 } = Immutable;
 
 const {
-    USER_INFO,
-    USER_REP,
+    USER_REQUEST,
+    USER_FAILURE,
     USER_ACTIVENAME,
-    USER_STARS,
-    USER_FOLLOWINGS,
-    USER_FOLLOWERS,
-    REQUEST_POSTS,
+    USER_INFO_SUCCESS,
+    USER_REP_SUCCESS,
+    USER_STARS_SUCCESS,
+    USER_FOLLOWERS_SUCCESS,
+    USER_FOLLOWINGS_SUCCESS,
 } = actionTypes;
 
 const initialState = Map({
@@ -25,6 +26,7 @@ const initialState = Map({
     followers: List(),
     followings: List(),
     isFetching: false,
+    error: ''
 });
 
 function sortNumber(reps) {
@@ -36,31 +38,33 @@ function sortNumber(reps) {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_POSTS:
+        case USER_REQUEST:
             return state.set('isFetching', action.isFetching);
         case USER_ACTIVENAME:
             return state.set('activeName', action.activeName);
-        case USER_INFO:
+        case USER_INFO_SUCCESS:
             return state
-                .set('user', toImmutable(action.user))
+                .set('user', toImmutable(action.result))
                 .set('isFetching', action.isFetching);
-        case USER_REP:
-            const reps = sortNumber(action.reps);
+        case USER_REP_SUCCESS:
+            const reps = sortNumber(action.result);
             return state
                 .set('reps', toImmutable(reps))
                 .set('isFetching', action.isFetching);
-        case USER_STARS:
+        case USER_STARS_SUCCESS:
             return state
-                .set('stars', toImmutable(action.stars))
+                .set('stars', toImmutable(action.result))
                 .set('isFetching', action.isFetching);
-        case USER_FOLLOWERS:
+        case USER_FOLLOWERS_SUCCESS:
             return state
-                .set('followers', toImmutable(action.followers))
+                .set('followers', toImmutable(action.result))
                 .set('isFetching', action.isFetching);
-        case USER_FOLLOWINGS:
+        case USER_FOLLOWINGS_SUCCESS:
             return state
-                .set('followings', toImmutable(action.followings))
+                .set('followings', toImmutable(action.result))
                 .set('isFetching', action.isFetching);
+        case USER_FAILURE:
+            return state.set('error', action.error);
         default:
             return state;
     }
