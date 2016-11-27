@@ -2,31 +2,16 @@ import fetch from 'isomorphic-fetch';
 import * as actionTypes from './actionTypes';
 
 const {
-    SEARCH_ITEMS,
     SEARCH_ACTIVENAME,
-    REQUEST_POSTS,
+    SEARCH_REQUEST,
+    SEARCH_SUCCESS,
+    SEARCH_FAILURE
 } = actionTypes;
-
-export function getItemsAction(items, totalCount) {
-    return {
-        type: SEARCH_ITEMS,
-        items: items,
-        totalCount: totalCount,
-        isFetching: false,
-    };
-}
 
 export function changeActiveName(activeName) {
     return {
         type: SEARCH_ACTIVENAME,
         activeName: activeName,
-    };
-}
-
-export function requestPosts() {
-    return {
-        type: REQUEST_POSTS,
-        isFetching: true,
     };
 }
 
@@ -36,9 +21,13 @@ export function getItems(query, type, page = 1) {
         method: 'GET'
     });
 
-    return dispatch => {
-        dispatch(requestPosts());
-        return fetch(req)
+    return {
+        type: [
+            SEARCH_REQUEST,
+            SEARCH_SUCCESS,
+            SEARCH_FAILURE,
+        ],
+        promise: fetch(req)
             .then(res => res.json())
             .then(async(res) => {
                 if (type === 'users') {
@@ -47,11 +36,18 @@ export function getItems(query, type, page = 1) {
                             .then(_res => _res.json())
                             .then(_res => _res);
                     });
-                    const result = await Promise.all(getUsers);
-                    dispatch(getItemsAction(result, res.total_count));
+                    const items = await Promise.all(getUsers);
+                    return {
+                        items: items,
+                        totalCount: res.total_count,
+                    };
                 } else {
-                    dispatch(getItemsAction(res.items, res.total_count));
+                    return {
+                        items: res.items,
+                        totalCount: res.total_count,
+                    };
                 }
-            });
+            })
+            .catch(error => error)
     };
 }
