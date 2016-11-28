@@ -105,8 +105,7 @@ class Search extends React.Component {
                     <Tab
                         tabs={tabs}
                         activeName={tabs[2].activeName}
-                        onChange={_activeName => this.changeTabHandler(_activeName)}
-                        isFetching={isFetching} />
+                        onChange={_activeName => this.changeTabHandler(_activeName)} />
 
                     {
                         activeName === tabs[0].activeName &&
@@ -131,7 +130,7 @@ class Search extends React.Component {
                     }
 
                     {
-                        items && items.size > 0 &&
+                        items && items.size > 0 && !isFetching &&
                         <CountPage
                             max={totalPages}
                             reset={resetPage}
