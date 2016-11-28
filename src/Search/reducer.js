@@ -30,17 +30,11 @@ export default (state = initialState, action) => {
         case SEARCH_SUCCESS:
             let totalPages,
                 result = action.result;
-            /**
-             * 判断是否是第一次取得totalPages
-             */
-            if (state.get('totalPages') === 0) {
-                if (result.totalCount === result.items.length) {
-                    totalPages = 1;
-                } else {
-                    totalPages = Number((result.totalCount / result.items.length).toFixed(0)) + 1;
-                }
+
+            if (result.totalCount === result.items.length) {
+                totalPages = 1;
             } else {
-                totalPages = state.get('totalPages');
+                totalPages = Number((result.totalCount / result.items.length).toFixed(0)) + 1;
             }
 
             return state
