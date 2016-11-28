@@ -90,7 +90,9 @@ CountPage.porpTypes = {
 };
 
 CountPage.defaultProps = {
-    min: 1
+    min: 1,
+    max: 1,
+    reset: false,
 };
 
 export default CountPage;

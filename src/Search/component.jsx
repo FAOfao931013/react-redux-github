@@ -130,7 +130,7 @@ class Search extends React.Component {
                     }
 
                     {
-                        items && items.size > 0 && !isFetching &&
+                        items && items.size > 0 &&
                         <CountPage
                             max={totalPages}
                             reset={resetPage}
