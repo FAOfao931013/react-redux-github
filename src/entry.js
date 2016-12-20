@@ -10,8 +10,7 @@ import DevTools from 'src/DevTools';
 
 const store = configureStore();
 
-
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 //查看store数据
 store.subscribe(() => {
