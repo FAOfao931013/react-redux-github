@@ -5,7 +5,7 @@ import { routerMiddleware } from 'react-router-redux';
 import reducers from 'reducers';
 import promiseMiddleware from 'middleware/promiseMiddleware';
 
-const routeMiddleware = routerMiddleware(browserHistory);
+const routeMiddleware = routerMiddleware(hashHistory);
 
 const middleware = [
     // Thunk,
