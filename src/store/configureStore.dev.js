@@ -7,7 +7,7 @@ import reducers from 'reducers';
 import DevTools from 'src/DevTools';
 import promiseMiddleware from 'middleware/promiseMiddleware';
 
-const routeMiddleware = routerMiddleware(browserHistory);
+const routeMiddleware = routerMiddleware(hashHistory);
 
 const middleware = [
     // Thunk,
