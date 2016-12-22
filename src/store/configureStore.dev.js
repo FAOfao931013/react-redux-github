@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 // import Thunk from 'redux-thunk';
-import { hashHistory, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import { persistState } from 'redux-devtools';
 import reducers from 'reducers';
 import DevTools from 'src/DevTools';
 import promiseMiddleware from 'middleware/promiseMiddleware';
 
-const routeMiddleware = routerMiddleware(hashHistory);
+const routeMiddleware = routerMiddleware(browserHistory);
 
 const middleware = [
     // Thunk,

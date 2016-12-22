@@ -10,7 +10,9 @@ import DevTools from 'src/DevTools';
 
 const store = configureStore();
 
-const history = syncHistoryWithStore(hashHistory, store);
+const myHistory = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
+
+const history = syncHistoryWithStore(myHistory, store);
 
 //查看store数据
 store.subscribe(() => {

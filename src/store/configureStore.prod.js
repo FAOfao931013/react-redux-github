@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 // import Thunk from 'redux-thunk';
-import { hashHistory, browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import reducers from 'reducers';
 import promiseMiddleware from 'middleware/promiseMiddleware';
