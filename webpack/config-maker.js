@@ -1,5 +1,6 @@
 var WebpackConfig = require('webpack-config');
 var path = require('path');
+var autoprefixer = require('autoprefixer');
 
 var paths = {
     src: path.join(__dirname, '../src'),
@@ -41,23 +42,23 @@ var config = {
             // less
             {
                 test: /\.less$/,
-                loader: "style!css!less"
+                loader: 'style-loader!css-loader!less-loader!postcss-loader'
             },
             //css
             {
                 test: /\.css$/,
-                loaders: [
-                    'style',
-                    'css?root=.'
-                ]
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.(jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot)$/,
-                loader: 'url-loader'
+                loader: 'file-loader'
             }
 
         ]
     },
+
+    postcss: [ autoprefixer({ browsers: ['last 7 versions'] }) ],
+
     resolve: {
         extensions: ['', '.js', '.jsx'],
         alias: {

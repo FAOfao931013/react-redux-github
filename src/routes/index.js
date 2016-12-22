@@ -17,17 +17,4 @@ const routes = (
     </div>
 );
 
-// const routes = {
-// 	path: '/',
-// 	component: rootNode,
-// 	indexRoute: { onEnter: (nextState, replace) => replace('search') },
-// 	childRoutes: [{
-// 		path: 'search',
-// 		component: Search.containers
-// 	}, {
-// 		path: 'user/:name',
-// 		component: User.containers
-// 	}, ]
-// };
-
 export default routes;
