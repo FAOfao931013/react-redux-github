@@ -13,7 +13,7 @@ $ npm run dev
 ```
 
 ### 本地地址
-[http://localhost:8035/index/#/search](http://localhost:8035/index/#/search)
+[http://localhost:8035](http://localhost:8035)
 
 ### 项目说明
 整个项目模仿github移动端的搜索页面
@@ -39,5 +39,7 @@ $ npm run dev
 
 2016.11.27 增加并使用promiseMiddlewarez中间件
 
+2016.12.22 更新本地使用browserHistory
+
 ### 预览地址
-[https://faofao931013.github.io/react-redux-github/index/#/search](https://faofao931013.github.io/react-redux-github/index/#/search)
+[https://faofao931013.github.io/react-redux-github/index/](https://faofao931013.github.io/react-redux-github/index/)
