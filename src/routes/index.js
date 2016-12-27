@@ -4,15 +4,25 @@ import {
 	IndexRedirect,
 } from 'react-router';
 import rootNode from './rootNode';
-import * as Search from 'src/Search';
-import * as User from 'src/User';
+
+const search = (location, callback) => {
+  require.ensure([], require => {
+    callback(null, require('src/Search/containers').default);
+  }, 'search');
+};
+
+const user = (location, callback) => {
+  require.ensure([], require => {
+    callback(null, require('src/User/containers').default);
+  }, 'user');
+};
 
 const routes = (
     <div>
 		<Route path='/' component={rootNode}>
 			<IndexRedirect to='search' />
-			<Route path='search' component={Search.containers} />
-			<Route path='user/:name' component={User.containers} />
+			<Route path='search' getComponent={search} />
+			<Route path='user/:name' getComponent={user} />
 		</Route>
     </div>
 );
