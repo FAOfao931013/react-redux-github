@@ -41,5 +41,7 @@ $ npm run dev
 
 2016.12.22 更新本地使用browserHistory
 
+2016.12.27 使用按需加载
+
 ### 预览地址
 [https://faofao931013.github.io/react-redux-github/index/](https://faofao931013.github.io/react-redux-github/index/)
