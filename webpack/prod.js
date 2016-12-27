@@ -10,12 +10,13 @@ module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     ],
     entry: {
         entry: [
             'babel-polyfill',
             path.join(__dirname, '../src/entry.js')
-        ]
+        ],
+        vendor:['react', 'redux', 'react-dom', 'react-redux', 'react-router']
     },
 });
