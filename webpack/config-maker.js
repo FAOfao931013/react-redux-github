@@ -16,15 +16,24 @@ const paths = {
 
 const config = {
 
-    devtool: '#source-map',
+    devtool: 'inline-source-map',
+
+    entry: {
+        vendor: ['react', 'redux', 'react-dom', 'react-redux', 'react-router'],
+    },
 
     output: {
         path: path.join(__dirname, '../dist'),
         filename: '[name].js',
         sourceMapFilename: '[file].map',
-        publicPath: '/static/',
+        publicPath:'/static/',
         chunkFilename: '[name].[chunkhash:5].chunk.js',
     },
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+    ],
 
     module: {
         loaders: [
@@ -49,8 +58,7 @@ const config = {
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'
-            },
-            {
+            }, {
                 test: /\.(jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot)$/,
                 loader: 'file-loader'
             }
@@ -58,7 +66,9 @@ const config = {
         ]
     },
 
-    postcss: [ autoprefixer({ browsers: ['last 7 versions'] }) ],
+    postcss: [autoprefixer({
+        browsers: ['last 7 versions']
+    })],
 
     resolve: {
         extensions: ['', '.js', '.jsx'],
@@ -73,10 +83,6 @@ const config = {
             'middleware': paths.middleware,
         }
     },
-
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-    ]
 };
 
 module.exports = new WebpackConfig.Config().merge(config);

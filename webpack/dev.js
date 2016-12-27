@@ -1,12 +1,15 @@
 const webpack = require('webpack');
-var WebpackConfig = require('webpack-config');
-var path = require('path');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+const WebpackConfig = require('webpack-config');
+const path = require('path');
+const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').merge({
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
+        }),
     ],
     entry: {
         entry: [
