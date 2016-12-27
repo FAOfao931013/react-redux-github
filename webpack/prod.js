@@ -18,6 +18,6 @@ module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').
         ],
     },
     output:{
-        publicPath:'/react-redux-github/dist'
+        publicPath:'https://faofao931013.github.io/react-redux-github/dist/'
     }
 });
