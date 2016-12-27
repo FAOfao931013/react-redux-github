@@ -7,6 +7,9 @@ module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
+        }),
     ],
     entry: {
         entry: [
