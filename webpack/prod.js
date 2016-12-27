@@ -17,4 +17,7 @@ module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').
             path.join(__dirname, '../src/entry.js')
         ],
     },
+    output:{
+        publicPath:'/react-redux-github/dist'
+    }
 });
