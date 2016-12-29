@@ -43,5 +43,7 @@ $ npm run dev
 
 2016.12.27 使用按需加载
 
+2016.12.29 使用rem适配
+
 ### 预览地址
 [https://faofao931013.github.io/react-redux-github/index/](https://faofao931013.github.io/react-redux-github/index/)
