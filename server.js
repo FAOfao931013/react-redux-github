@@ -8,7 +8,7 @@ var config = require('./webpack/dev.config.js');
 
 var app = express();
 var compiler = webpack(config);
-``
+
 app.use(express.static(path.join(__dirname, '/')));
 
 app.use(webpackDevMiddleware(compiler, {
