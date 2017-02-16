@@ -11,11 +11,19 @@
         #root {
             background-color: #fff;
         }
-        html {
-            font-size: 75px;
-        }
     </style>
 </head>
+<script type="text/javascript">
+    function setRem() {
+        document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + document.body.clientWidth / 5 + 'px');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setRem();
+    });
+
+    window.onresize = setRem;
+</script>
 <body>
 <div class="views">
     <div class="view view-main">

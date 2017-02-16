@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const WebpackConfig = require('webpack-config');
 const path = require('path');
 
-module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').merge({
+module.exports = new WebpackConfig.Config().extend('./webpack/base.config.js').merge({
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             minimize: true

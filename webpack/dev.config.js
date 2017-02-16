@@ -3,7 +3,7 @@ const WebpackConfig = require('webpack-config');
 const path = require('path');
 const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
-module.exports = new WebpackConfig.Config().extend('./webpack/config-maker.js').merge({
+module.exports = new WebpackConfig.Config().extend('./webpack/base.config.js').merge({
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
