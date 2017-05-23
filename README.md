@@ -26,7 +26,7 @@ $ npm run dev
 
 路由采用 react-router 和 react-router-redux
 
-样式采用 less
+预处理样式 less
 
 ### 更新
 2016.10.26 新增了用户页面
