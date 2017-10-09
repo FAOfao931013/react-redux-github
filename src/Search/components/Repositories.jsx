@@ -41,7 +41,7 @@ const Repositories = ({
     </List> : <SearchPlaceholder />;
 
 Repositories.propTypes = {
-    item: React.PropTypes.instanceOf(Immutable.List),
+    items: React.PropTypes.instanceOf(Immutable.List),
     isFetching: React.PropTypes.bool,
 };
 

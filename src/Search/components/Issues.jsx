@@ -42,7 +42,7 @@ const Issues = ({
     </List> : <SearchPlaceholder />;
 
 Issues.propTypes = {
-    item: React.PropTypes.instanceOf(Immutable.List),
+    items: React.PropTypes.instanceOf(Immutable.List),
     isFetching: React.PropTypes.bool,
 };
 

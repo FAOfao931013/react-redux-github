@@ -19,11 +19,11 @@ const user = (location, callback) => {
 
 const routes = (
     <div>
-		<Route path='/' component={rootNode}>
-			<IndexRedirect to='search' />
-			<Route path='search' getComponent={search} />
-			<Route path='user/:name' getComponent={user} />
-		</Route>
+        <Route path='/' component={rootNode}>
+            <IndexRedirect to='search' />
+            <Route path='search' getComponent={search} />
+            <Route path='user/:name' getComponent={user} />
+        </Route>
     </div>
 );
 

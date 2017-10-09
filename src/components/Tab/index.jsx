@@ -7,13 +7,17 @@ class Tab extends React.Component {
 		super(props);
 
 		this.state = {
-			activeName:props.activeName
+			activeName: props.activeName
 		};
+	}
+
+	componentDidMount() {
+		this.changeActiveName(this.props.activeName);
 	}
 
 	changeActiveName(activeName) {
 		this.setState({
-			activeName:activeName
+			activeName: activeName
 		});
 
 		if (typeof this.props.onChange === 'function') {
