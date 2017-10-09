@@ -19,5 +19,6 @@ module.exports = new WebpackConfig.Config().extend('./webpack/base.config.js').m
     },
     output:{
         publicPath:'https://faofao931013.github.io/react-redux-github/dist/'
+        // publicPath:'dist/'
     }
 });
