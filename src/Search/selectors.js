@@ -46,6 +46,7 @@ export const getSelector = createSelector(
 );
 
 export function mapStateToProps(state) {
+    state = state.components;
     return {
         items: getSelector(state).items,
         activeName: getSelector(state).activeName,

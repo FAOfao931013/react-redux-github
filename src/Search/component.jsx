@@ -39,7 +39,6 @@ class Search extends React.Component {
     }
 
     keyUpHandler(e) {
-
         if (e.keyCode === 13) {
 
             let activeName = this.props.activeName ? this.props.activeName : tabs[2].activeName;

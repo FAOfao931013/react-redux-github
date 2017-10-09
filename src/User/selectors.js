@@ -55,6 +55,7 @@ export const getSelector = createSelector(
 );
 
 export function mapStateToProps(state) {
+    state = state.components;
     return {
         activeName: getSelector(state).activeName,
         user: getSelector(state).user,

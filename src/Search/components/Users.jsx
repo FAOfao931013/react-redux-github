@@ -42,7 +42,7 @@ const Users = ({
     </List> : <SearchPlaceholder />;
 
 Users.propTypes = {
-    item: React.PropTypes.instanceOf(Immutable.List),
+    items: React.PropTypes.instanceOf(Immutable.List),
     isFetching: React.PropTypes.bool,
 };
 

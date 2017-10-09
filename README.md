@@ -45,5 +45,7 @@ $ npm run dev
 
 2016.12.29 使用rem适配
 
+2017.10.09 更新react版本（15.6.2）
+
 ### 预览地址
 [https://faofao931013.github.io/react-redux-github/index/](https://faofao931013.github.io/react-redux-github/index/)
