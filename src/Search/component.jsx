@@ -67,8 +67,6 @@ class Search extends React.Component {
             isFetching,
         } = this.props;
 
-        console.log(items);
-
         return (
             <div className='search'>
                 <Header
